@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<canzone title="Santo sei">
+  <strofa name="santo">
+    <parte accordo="Do" />
+    <parte accordo="Fa" />
+    <parte accordo="Sol" />
+    <parte accordo="Do" />
+    <parte accordo="Fa" />
+    <parte accordo="Sol" />
+    <br />
+    <parte accordo="Do">Santo, Santo, </parte>
+    <parte accordo="Fa">Santo sei</parte>
+    <br />
+    <parte accordo="Sol">Signore Dio dell'uni</parte>
+    <parte accordo="Do">verso</parte>
+    <br />
+    <parte accordo="Do">I cieli e la terra </parte>
+    <parte accordo="Fa">sono,</parte>
+    <br />
+    <parte accordo="Sol">sono pieni della tua </parte>
+    <parte accordo="Do">gloria.</parte>
+  </strofa>
+  <strofa>
+  </strofa>
+  <strofa name="osanna1">
+    <parte accordo="Fa">Osan</parte>
+    <parte accordo="Sol">na, </parte>
+    <parte accordo="Fa">osan</parte>
+    <parte accordo="Do">na,</parte>
+    <br />
+    <parte accordo="Fa">osanna nell'</parte>
+    <parte accordo="Sol">alto dei </parte>
+    <parte accordo="Do">cieli.</parte>
+  </strofa>
+  <strofa ref="osanna1" />
+  <strofa>
+    <parte accordo="Sol7" />
+    <parte accordo="La7" />
+  </strofa>
+  <strofa name="benedetto">
+    <parte>Bene</parte>
+    <parte accordo="Re">detto colui che </parte>
+    <parte accordo="Mi-7">viene,</parte>
+    <br />
+    <parte>che </parte>
+    <parte accordo="La7">viene nel nome del Si</parte>
+    <parte accordo="Sol7">gno</parte>
+    <parte accordo="Re">re.</parte>
+  </strofa>
+  <strofa ref="benedetto" />
+  <strofa name="osanna2">
+    <parte accordo="Sol">Osan</parte>
+    <parte accordo="La7">na, </parte>
+    <parte accordo="Sol">osan</parte>
+    <parte accordo="Re">na,</parte>
+    <br />
+    <parte accordo="Sol">osanna nell'</parte>
+    <parte accordo="La">alto </parte>
+    <parte accordo="Re4">dei cie</parte>
+    <parte accordo="Re">li.</parte>
+  </strofa>
+  <strofa ref="osanna2" />
+</canzone>

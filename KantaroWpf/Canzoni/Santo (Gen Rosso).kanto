@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<canzone title="Santo" autore="Gen Rosso" variazione="-2">
+  <strofa name="santo">
+    <parte accordo="La">Santo, </parte>
+    <parte accordo="Fa#-">Santo, </parte>
+    <parte accordo="Do#-">Santo,</parte>
+    <br />
+    <parte>il Sig</parte>
+    <parte accordo="Re">nore Dio dell'uni</parte>
+    <parte accordo="Mi">verso.</parte>
+    <br />
+    <parte accordo="Re">I ci</parte>
+    <parte accordo="Do#-">eli e la </parte>
+    <parte accordo="Re">ter</parte>
+    <parte accordo="Fa#-">ra</parte>
+    <br />
+    <parte>sono </parte>
+    <parte accordo="Re">pieni </parte>
+    <parte accordo="Si7">della tua </parte>
+    <parte accordo="Mi">gloria.</parte>
+  </strofa>
+  <strofa name="osanna">
+    <parte accordo="La">Osan</parte>
+    <parte accordo="Mi">na, </parte>
+    <parte accordo="La">osan</parte>
+    <parte accordo="Mi">na,</parte>
+    <br />
+    <parte accordo="Re">Osanna nell'</parte>
+    <parte accordo="Mi">alto dei </parte>
+    <parte accordo="La">cieli</parte>
+  </strofa>
+  <strofa ref="osanna" />
+  <strofa>
+    <parte>Bene</parte>
+    <parte accordo="La">det</parte>
+    <parte accordo="Fa#-">to Co</parte>
+    <parte accordo="Re">lui che </parte>
+    <parte accordo="Mi">viene</parte>
+    <br />
+    <parte>nel nome del Signo</parte>
+    <parte accordo="La">re.</parte>
+  </strofa>
+  <strofa ref="osanna" />
+  <strofa ref="osanna" />
+</canzone>

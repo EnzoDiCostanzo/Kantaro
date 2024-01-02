@@ -1,0 +1,14 @@
+﻿<Application x:Class="Application"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:vm="clr-namespace:Enzo.Music"
+    StartupUri="Views\NavigationWindow.xaml">
+    <Application.Resources>
+        <vm:ViewModelLocator xmlns:vm="clr-namespace:Enzo.Music" x:Key="ViewModelLocator" />
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+        <vm:InvertBoolConverter x:Key="InvertBoolConverter" />
+    </Application.Resources>
+    <JumpList.JumpList>
+        <JumpList ShowFrequentCategory="True" />
+    </JumpList.JumpList>
+</Application>

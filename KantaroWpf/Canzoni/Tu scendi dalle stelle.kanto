@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<canzone title="Tu scendi dalle stelle" variazione="-2">
+  <strofa name="rit">
+    <parte accordo="Re">Tu scendi </parte>
+    <parte accordo="La">dalle </parte>
+    <parte accordo="Re">stelle, o Re del </parte>
+    <parte accordo="La">Cielo,</parte>
+    <br />
+    <parte>e vieni in  </parte>
+    <parte accordo="La7">una grot</parte>
+    <parte accordo="Sol">ta al </parte>
+    <parte accordo="Re">freddo, al </parte>
+    <parte accordo="La">ge</parte>
+    <parte accordo="Re">lo.</parte>
+    <br />
+    <parte>O Bam</parte>
+    <parte accordo="La">bino mio di</parte>
+    <parte accordo="Re">vino,</parte>
+    <br />
+    <parte>io ti ve</parte>
+    <parte accordo="La">do qui a tre</parte>
+    <parte accordo="Re">mar: o Dio be</parte>
+    <parte accordo="La">ato!</parte>
+    <br/>
+    <parte>Ah, quanto ti</parte>
+    <parte accordo="La7"> cos</parte>
+    <parte accordo="Sol">tò l'a</parte>
+    <parte accordo="Re">vermi </parte>
+    <parte accordo="La">ama</parte>
+    <parte accordo="Re">to!</parte>
+    <br/>
+    <parte accordo="La">Ah, quanto ti</parte>
+    <parte accordo="La7"> cos</parte>
+    <parte accordo="Sol">tò l'a</parte>
+    <parte accordo="Re">vermi </parte>
+    <parte accordo="La">ama</parte>
+    <parte accordo="Re">to!</parte>
+  </strofa>
+  <strofa>
+    <parte accordo="Re">A Te che </parte>
+    <parte accordo="La">sei del </parte>
+    <parte accordo="Re">mondo il creato</parte>
+    <parte accordo="La">re,</parte>
+    <br />
+    <parte>mancano  </parte>
+    <parte accordo="La7">panni e fuo</parte>
+    <parte accordo="Sol">co, o </parte>
+    <parte accordo="Re">mio Si</parte>
+    <parte accordo="La">gno</parte>
+    <parte accordo="Re">re.</parte>
+    <br />
+    <parte>Caro </parte>
+    <parte accordo="La">eletto pargo</parte>
+    <parte accordo="Re">letto,</parte>
+    <br />
+    <parte>quanto que</parte>
+    <parte accordo="La">sta pover</parte>
+    <parte accordo="Re">tà più m'innamo</parte>
+    <parte accordo="La">ra!</parte>
+    <br/>
+    <parte>Giacché ti fe</parte>
+    <parte accordo="La7">ce a</parte>
+    <parte accordo="Sol">mor </parte>
+    <parte accordo="Re">povero </parte>
+    <parte accordo="La">anco</parte>
+    <parte accordo="Re">ra.</parte>
+    <br/>
+    <parte>Giacché ti fe</parte>
+    <parte accordo="La7">ce a</parte>
+    <parte accordo="Sol">mor </parte>
+    <parte accordo="Re">povero </parte>
+    <parte accordo="La">anco</parte>
+    <parte accordo="Re">ra.</parte>
+  </strofa>
+  <strofa>
+    <parte accordo="Re">Tu lasci </parte>
+    <parte accordo="La">del tuo Pa</parte>
+    <parte accordo="Re">dre il divin se</parte>
+    <parte accordo="La">no,</parte>
+    <br />
+    <parte>per ve</parte>
+    <parte accordo="La7">nire a pe</parte>
+    <parte accordo="Sol">nar su </parte>
+    <parte accordo="Re">poco </parte>
+    <parte accordo="La">fie</parte>
+    <parte accordo="Re">no.</parte>
+    <br />
+    <parte>Dolce a</parte>
+    <parte accordo="La">more del mio </parte>
+    <parte accordo="Re">cuore,</parte>
+    <br />
+    <parte>dove a</parte>
+    <parte accordo="La">mor ti traspor</parte>
+    <parte accordo="Re">tò? O Gesù </parte>
+    <parte accordo="La">mio</parte>
+    <br/>
+    <parte>Perché tanto pa</parte>
+    <parte accordo="La7">tir? </parte>
+    <parte accordo="Sol">Per </parte>
+    <parte accordo="Re">amor </parte>
+    <parte accordo="La">mi</parte>
+    <parte accordo="Re">o.</parte>
+    <br/>
+    <parte>Perché tanto pa</parte>
+    <parte accordo="La7">tir? </parte>
+    <parte accordo="Sol">Per </parte>
+    <parte accordo="Re">amor </parte>
+    <parte accordo="La">mi</parte>
+    <parte accordo="Re">o.</parte>
+  </strofa>
+  <strofa>
+    <parte>Ma se fu tuo voler il tuo parire</parte>
+    <br />
+    <parte>perché vuoi pianger poi, perché vagire?</parte>
+    <br />
+    <parte>Sposo mio, amato Dio, mio Gesù</parte>
+    <br />
+    <parte>t'intendo, sì. Ah, mio Signore:</parte>
+    <br />
+    <parte>tu piangi non per duol, ma per amore!</parte>
+    <br />
+    <parte>tu piangi non per duol, ma per amore!</parte>
+  </strofa>
+  <strofa>
+    <parte>Tu piangi per vederti da me ingrato,</parte>
+    <br />
+    <parte>dopo sì grande amor, sì poco amato.</parte>
+    <br />
+    <parte>O diletto del mio petto se già un tempo</parte>
+    <br />
+    <parte>fu così, or te sol bramo.</parte>
+    <br />
+    <parte>Caro non pianger più, ché io ti amo!</parte>
+    <br />
+    <parte>Caro non pianger più, ché io ti amo!</parte>
+  </strofa>
+</canzone>

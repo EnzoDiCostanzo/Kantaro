@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<canzone title="Sei grande Dio" autore="Cento"><!-- Pagina 56 -->
+  <strofa>
+    <parte accordo="Si7">C'è una </parte>
+    <parte accordo="Mi">vita</parte>
+    <br />
+    <parte>che </parte>
+    <parte accordo="Do#-">respira in tutto l'uni</parte>
+    <parte accordo="Si7">verso:</parte>
+    <br />
+    <parte accordo="Fa#-">è il </parte>
+    <parte accordo="Si7">cuore del </parte>
+    <parte accordo="Mi">mondo</parte>
+    <br />
+    <parte>delle </parte>
+    <parte accordo="Si7">sue crea</parte>
+    <parte accordo="Mi">ture</parte>
+    <br />
+    <parte>che grida </parte>
+    <parte accordo="Fa#-7">forte</parte>
+    <br/>
+    <parte>questa </parte>
+    <parte accordo="Si7">sua can</parte>
+    <parte accordo="Mi">zone</parte>
+    <parte accordo="La">.</parte>
+    <parte accordo="Mi"></parte>
+  </strofa>
+  <strofa name="rit">
+    <parte accordo="Mi"> Sei grande </parte>
+    <parte accordo="Mi">Dio</parte>
+    <br />
+    <parte>sei grande </parte>
+    <parte accordo="La">come il mondo </parte>
+    <parte accordo="Mi">mio.</parte>
+    <br />
+    <parte>Sei immenso come il </parte>
+    <parte accordo="Fa#-">cielo</parte>
+    <br />
+    <parte>come il cuore di ogni ma</parte>
+    <parte accordo="Si7">dre della terra.</parte>
+  </strofa>
+  <strofa>
+    <parte accordo="Si7">Io ti </parte>
+    <parte accordo="Mi">porto</parte>
+    <br />
+    <parte>il </parte>
+    <parte accordo="Do#-">mio mondo pieno di pro</parte>
+    <parte accordo="Si7">blemi:</parte>
+    <br />
+    <parte accordo="Fa#-">ti por</parte>
+    <parte accordo="Si7">to il mio </parte>
+    <parte accordo="Mi">cuore</parte>
+    <br />
+    <parte>anche </parte>
+    <parte accordo="Si7">se nel suo </parte>
+    <parte accordo="Mi">dolore</parte>
+    <br />
+    <parte>ti grida </parte>
+    <parte accordo="Fa#-7">forte</parte>
+    <br/>
+    <parte>questa </parte>
+    <parte accordo="Si7">sua can</parte>
+    <parte accordo="Mi">zone</parte>
+    <parte accordo="La">.</parte>
+    <parte accordo="Mi"></parte>
+  </strofa>
+  <strofa ref="rit" />
+  <strofa>
+    <parte accordo="Si7">La spe</parte>
+    <parte accordo="Mi">ranza</parte>
+    <br />
+    <parte>noi </parte>
+    <parte accordo="Do#-">t'offriamo Dio dell'uni</parte>
+    <parte accordo="Si7">verso:</parte>
+    <br />
+    <parte accordo="Fa#-">le atte</parte>
+    <parte accordo="Si7">se del </parte>
+    <parte accordo="Mi">mondo</parte>
+    <br />
+    <parte>del tuo </parte>
+    <parte accordo="Si7">popolo, Si</parte>
+    <parte accordo="Mi">gnore,</parte>
+    <br />
+    <parte>che loda </parte>
+    <parte accordo="Fa#-7">e canta</parte>
+    <br/>
+    <parte>questa </parte>
+    <parte accordo="Si7">can</parte>
+    <parte accordo="Mi">zone</parte>
+    <parte accordo="La">.</parte>
+    <parte accordo="Mi"></parte>
+  </strofa>
+  <strofa ref="rit" />
+</canzone>

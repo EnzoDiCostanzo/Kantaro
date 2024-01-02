@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<canzone title="Popoli tutti acclamate" variazione="-5">
+  <strofa name="inizio">
+    <parte accordo="Sol">Mio Dio, </parte>
+    <parte accordo="Re">Signore, </parte>
+    <parte accordo="Mi-">nulla è </parte>
+    <parte accordo="Re">pari a </parte>
+    <parte accordo="Do">Te.</parte>
+    <br />
+    <parte>Ora e per </parte>
+    <parte accordo="Sol">sempre </parte>
+    <parte accordo="Do">voglio </parte>
+    <parte accordo="Sol">lodare il </parte>
+    <parte accordo="Mi-7">tuo grande </parte>
+    <parte accordo="Fa">amor </parte>
+    <parte accordo="Do">per </parte>
+    <parte accordo="Re4">noi.</parte>
+    <parte accordo="Re" />
+  </strofa>
+  <strofa>
+    <parte accordo="Sol">Mia roccia </parte>
+    <parte accordo="Re">Tu sei, </parte>
+    <parte accordo="Mi-">pace e con</parte>
+    <parte accordo="Re">forto mi</parte>
+    <parte accordo="Do"> dai.</parte>
+    <br />
+    <parte>Con tutto il </parte>
+    <parte accordo="Sol">cuore </parte>
+    <parte accordo="Do">e le mie </parte>
+    <parte accordo="Sol">forze </parte>
+    <parte accordo="Mi-7">sempre io ti </parte>
+    <parte accordo="Fa">ado-</parte>
+    <parte accordo="Do">re-</parte>
+    <parte accordo="Re4">rò.</parte>
+    <parte accordo="Re" />
+  </strofa>
+  <strofa name="rit">
+    <parte accordo="Sol">Popoli </parte>
+    <parte accordo="Mi-">tutti accla</parte>
+    <parte accordo="Do">mate al Si</parte>
+    <parte accordo="Re">gno-re, </parte>
+    <parte accordo="Sol">gloria e po</parte>
+    <parte accordo="Mi-">tenza can</parte>
+    <parte accordo="Do7+">tiamo al </parte>
+    <parte accordo="Re4">Re, </parte>
+    <parte accordo="Re" />
+    <br />
+    <parte accordo="Mi-">Mari e monti si </parte>
+    <parte accordo ="Do">prostrino a Te, al tuo </parte>
+    <parte accordo="Re">nome,</parte>
+    <parte accordo="Mi-"> o Si</parte>
+    <parte accordo="Re">gnore.</parte>
+  </strofa>
+  <strofa>
+    <parte accordo="Sol">Canto di </parte>
+    <parte accordo="Mi-">gioia per </parte>
+    <parte accordo="Do">quello che </parte>
+    <parte accordo="Re">fai, per </parte>
+    <parte accordo="Sol">sempre Si</parte>
+    <parte accordo="Mi-">gnore con </parte>
+    <parte accordo="Do7+">Te reste</parte>
+    <parte accordo="Re4">rò, </parte>
+    <parte accordo="Re" />
+    <br />
+    <parte accordo="Mi-">non c'è promessa non </parte>
+    <parte accordo ="Do">c'è fedeltà </parte>
+    <parte accordo="Re7">che in </parte>
+    <parte accordo="Sol">Te</parte>
+    <parte accordo="Re" />
+  </strofa>
+  <strofa ref="inizio" />
+  <strofa ref="rit" />
+  <strofa>
+    <parte accordo="La">Canto di </parte>
+    <parte accordo="Fa#-">gioia per </parte>
+    <parte accordo="Re">quello che </parte>
+    <parte accordo="Mi">fai, per </parte>
+    <parte accordo="La">sempre Si</parte>
+    <parte accordo="Fa#-">gnore con </parte>
+    <parte accordo="Re">Te reste</parte>
+    <parte accordo="Mi4">rò, </parte>
+    <parte accordo="Mi" />
+    <br />
+    <parte accordo="Fa#-">non c'è promessa non </parte>
+    <parte accordo ="Re">c'è fedeltà </parte>
+    <parte accordo="Mi">che in </parte>
+    <parte accordo="Fa#-">Te.</parte>
+    <br />
+    <parte accordo="Fa#-">Non c'è promessa non </parte>
+    <parte accordo ="Re">c'è fedeltà </parte>
+    <parte accordo="Mi">che in </parte>
+    <parte accordo="Fa#-">Te.</parte>
+    <br />
+    <parte accordo="Fa#-">Non c'è promessa non </parte>
+    <parte accordo ="Re">c'è fedeltà </parte>
+    <parte accordo="Mi">che in </parte>
+    <parte accordo="La">Te.</parte>
+  </strofa>
+</canzone>

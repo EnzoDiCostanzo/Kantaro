@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<canzone title="Vieni Santo Spirito" variazione="0">
+  <strofa name="rit">
+    <parte accordo="Fa">Vieni </parte>
+    <parte accordo="Re-">Santo </parte>
+    <parte accordo="Sol-">Spiri</parte>
+    <parte accordo="Do">to</parte>
+    <br />
+    <parte accordo="Fa">Vieni </parte>
+    <parte accordo="Re-">Santo </parte>
+    <parte accordo="Sol-">Spiri</parte>
+    <parte accordo="Do">to</parte>
+    <br />
+    <parte accordo="Fa">Riempi i, </parte>
+    <parte accordo="La#">cuori </parte>
+    <parte accordo="Do">dei tuoi </parte>
+    <parte accordo="La-">fedeli</parte>
+    <br />
+    <parte accordo="Re-">Accendi il </parte>
+    <parte accordo="Sol-">fuoco del</parte>
+    <parte accordo="Fa"> tuo </parte>
+    <parte accordo="Do">amor</parte>
+    <parte accordo="Do7"></parte>
+    <br />
+    <parte accordo="FA">Vieni </parte>
+    <parte accordo="Re-">Santo </parte>
+    <parte accordo="Sol-">Spiri</parte>
+    <parte accordo="DO">to</parte>
+    <br />
+    <parte accordo="FA">Vieni </parte>
+    <parte accordo="Re-">Santo </parte>
+    <parte accordo="Sol-">Spiri</parte>
+    <parte accordo="DO">to</parte>
+    <br />
+    <parte accordo="Fa">Riempi i, </parte>
+    <parte accordo="La#">cuori </parte>
+    <parte accordo="Do">dei tuoi </parte>
+    <parte accordo="La-">fedeli</parte>
+    <br />
+    <parte accordo="Re-">Accendi il </parte>
+    <parte accordo="Sol-">fuoco del</parte>
+    <parte accordo="Fa"> tuo </parte>
+    <parte accordo="Do">amor</parte>
+    <parte accordo="Fa"></parte>
+  </strofa>
+  <strofa>
+    <parte accordo="Fa">Ovunque sei </parte>
+    <parte accordo="Re-">presente </parte>
+    <parte accordo="Sol-">Spirito di </parte>
+    <parte accordo="Do">Dio </parte>
+    <br />
+    <parte accordo="Fa">In tutto cio che vive in</parte>
+    <parte accordo="Re#">fondi la</parte>
+    <parte accordo="Re7"> Tua forza</parte>
+    <parte accordo="Do"></parte>
+    <br />
+    <parte accordo="Fa">Tu se Parola </parte>
+    <parte accordo="La#">vera, </parte>
+    <parte accordo="Fa">fonte </parte>
+    <parte accordo="Sol-">di spe</parte>
+    <parte accordo="Fa">ranza</parte>
+    <br />
+    <parte accordo="La#">e guida al nostro </parte>
+    <parte accordo="Fa">cuo</parte>
+    <parte accordo="Do">re.</parte>
+  </strofa>
+  <strofa ref="rit" />
+  <strofa>
+    <parte>Tu vivi in ogni uomo, Spirito di Dio,</parte>
+    <br />
+    <parte>in chi di giorno in giorno lotta per il pane,</parte>
+    <br />
+    <parte>in chi senza paura cerca la giustizia</parte>
+    <br />
+    <parte>e vive nella pace.</parte>
+  </strofa>
+  <strofa ref="rit" />
+  <strofa>
+    <parte>Sostieni in noi la fede, Spirito di Dio,</parte>
+    <br />
+    <parte>e rendi il nostro amore fermento genuino</parte>
+    <br />
+    <parte>per dare a tutto il mondo un volto sempre nuovo</parte>
+    <br />
+    <parte>più giusto e più sincero.</parte>
+  </strofa>
+  <strofa ref="rit" />
+  <strofa>
+    <parte>Da te noi siamo uniti, Spirito di Dio,</parte>
+    <br />
+    <parte>per essere nel mondo segno dell'amore</parte>
+    <br />
+    <parte>col quale ci hai salvato dall'odio e dalla morte</parte>
+    <br />
+    <parte>in Cristo nostro amico.</parte>
+  </strofa>
+  <strofa ref="rit" />
+</canzone>

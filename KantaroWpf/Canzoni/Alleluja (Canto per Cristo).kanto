@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<canzone title="Alleluia (Canto per Cristo)" variazione="-5">
+  <strofa>
+    <parte accordo="Do#">Canto </parte>
+    <parte accordo="Fa#-">per Cristo che </parte>
+    <parte accordo="Sol">mi libere</parte>
+    <parte accordo="Re">rà</parte>
+    <br />
+    <parte accordo="Sol">quando ver</parte>
+    <parte accordo="Re">rà nella </parte>
+    <parte accordo="La">gloria,</parte>
+    <br />
+    <parte accordo="Re">quando la </parte>
+    <parte accordo="Fa#-">vita con </parte>
+    <parte accordo="Sol">lui rinasce</parte>
+    <parte accordo="Re">rà.</parte>
+    <br />
+    <parte accordo="Sol">Allelui</parte>
+    <parte accordo="Re">a, alle</parte>
+    <parte accordo="La">lui</parte>
+    <parte accordo="Re">a.</parte>
+  </strofa>
+  <strofa name="rit1">
+    <parte accordo="Re">Allelui</parte>
+    <parte accordo="Fa#">a - Alleluia</parte>
+    <parte accordo="Sol"> - Al</parte>
+    <parte accordo="Re">lelu</parte>
+    <parte accordo="Sol">ia - </parte>
+    <parte accordo="Re">Alleluia - Al</parte>
+    <parte accordo="Mi">le</parte>
+    <parte accordo="La7">luia</parte>
+  </strofa>
+  <strofa ref="rit1" />
+  <strofa name="rit2">
+    <parte accordo="Re">Al</parte>
+    <parte accordo="La">le</parte>
+    <parte accordo="Si-">lu</parte>
+    <parte accordo="Re">ia, al</parte>
+    <parte accordo="Sol">le</parte>
+    <parte accordo="Re">lu</parte>
+    <parte accordo="La7">ia</parte>
+  </strofa>
+  <strofa ref="rit2" />
+  <strofa>
+    <parte accordo="Re">Canto </parte>
+    <parte accordo="Fa#-">per Cristo: in </parte>
+    <parte accordo="Sol">lui rifiori</parte>
+    <parte accordo="Re">rà</parte>
+    <br />
+    <parte accordo="Sol">ogni spe</parte>
+    <parte accordo="Re">ranza per</parte>
+    <parte accordo="La">duta;</parte>
+    <br />
+    <parte accordo="Re">ogni crea</parte>
+    <parte accordo="Fa#-">tura con </parte>
+    <parte accordo="Sol">lui risorge</parte>
+    <parte accordo="Re">rà.</parte>
+    <br />
+    <parte accordo="Sol">Allelui</parte>
+    <parte accordo="Re">a, alle</parte>
+    <parte accordo="La">lui</parte>
+    <parte accordo="Re">a.</parte>
+  </strofa>
+  <strofa>
+    <parte accordo="Re">Canto </parte>
+    <parte accordo="Fa#-">per Cristo: un </parte>
+    <parte accordo="Sol">giorno torne</parte>
+    <parte accordo="Re">rà</parte>
+    <br />
+    <parte accordo="Sol">festa per </parte>
+    <parte accordo="Re">tutti gli a</parte>
+    <parte accordo="La">mici,</parte>
+  </strofa>
+</canzone>

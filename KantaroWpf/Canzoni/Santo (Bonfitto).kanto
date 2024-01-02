@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<canzone title="Santo" autore="Bonfitto" variazione="-3">
+  <strofa>
+    <parte accordo="Sol"> Sa</parte>
+    <parte accordo="Re">nto</parte>
+    <parte accordo="Mi-">, Santo, </parte>
+    <parte accordo="Do">Santo il Si</parte>
+    <parte accordo="Re">gnore </parte>
+    <parte accordo="Sol">Dio dell'u</parte>
+    <parte accordo="Re">ni</parte>
+    <parte accordo="Do">ver</parte>
+    <parte accordo="Re">so</parte>
+    <br />
+    <parte>i </parte>
+    <parte accordo="Sol">cieli e la </parte>
+    <parte accordo="Do">terra sono </parte>
+    <parte accordo="La-">pieni della tua </parte>
+    <parte accordo="Re7">gloria</parte>
+    <br />
+    <parte accordo="Sol">Osanna, o</parte>
+    <parte accordo="Mi-">sanna, </parte>
+    <parte accordo="Si-">osan</parte>
+    <parte accordo="Mi-">na nell'</parte>
+    <parte accordo="La-">alto dei </parte>
+    <parte accordo="Re7">cieli</parte>
+    <br />
+    <parte accordo="Sol">Benedetto Colui che </parte>
+    <parte accordo="Do">viene nel</parte>
+    <parte accordo="La-"> nome del </parte>
+    <parte accordo="Re7">Signore</parte>
+    <br />
+    <parte accordo="Sol">Osanna, o</parte>
+    <parte accordo="Mi-">sanna, </parte>
+    <parte accordo="Si-">osan</parte>
+    <parte accordo="Mi-">na nell'</parte>
+    <parte accordo="La-">alto dei </parte>
+    <parte accordo="Re7">cieli.</parte>
+    <br />
+    <parte>I </parte>
+    <parte accordo="Sol">cieli e la </parte>
+    <parte accordo="Do">terra sono pieni</parte>
+    <parte accordo="La-"> della tua </parte>
+    <parte accordo="Re7">gloria</parte>
+    <br />
+    <parte accordo="Sol">Osanna, o</parte>
+    <parte accordo="Mi-">sanna, </parte>
+    <parte accordo="Si-">osan</parte>
+    <parte accordo="Mi-">na nell'</parte>
+    <parte accordo="La-">alto dei </parte>
+    <parte accordo="Re7">cieli.</parte>
+  </strofa>
+</canzone>

@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<canzone title="Astro del ciel" autore="Meli">
+  <strofa>
+    <parte accordo="SIb">Astro del ciel, Pargol divin!</parte>
+    <br />
+    <parte accordo="Fa7">Mite agnello </parte>
+    <parte accordo="SIb">Redentor!</parte>
+    <br />
+    <parte accordo="MIb">Tu che i vati da </parte>
+    <parte accordo="SIb">lungi sognar,</parte>
+    <br />
+    <parte accordo="MIb">Tu che angeliche </parte>
+    <parte accordo="SIb">voci annunziar,</parte>
+  </strofa>
+  <strofa name="rit">
+    <parte accordo="Fa7">Luce dona alle </parte>
+    <parte accordo="SIb">menti,</parte>
+    <br />
+    <parte>Pace in</parte>
+    <parte accordo="Fa7">fondi nei cuor!</parte>
+    <br />
+    <parte accordo="Fa7">Luce dona alle </parte>
+    <parte accordo="SIb">menti,</parte>
+    <br />
+    <parte>Pace in</parte>
+    <parte accordo="Fa7">fondi nei cuor!</parte>
+  </strofa>
+  <strofa>
+    <parte accordo="SIb">Astro del ciel, Pargol divin!</parte>
+    <br />
+    <parte accordo="Fa7">Mite agnello </parte>
+    <parte accordo="SIb">Redentor!</parte>
+    <br />
+    <parte accordo="MIb">Tu di stirpe re</parte>
+    <parte accordo="SIb">gale decor,</parte>
+    <br />
+    <parte accordo="MIb">Tu virgineo </parte>
+    <parte accordo="SIb">mistico fior,</parte>
+  </strofa>
+  <strofa ref="rit" />
+  <strofa>
+    <parte accordo="SIb">Astro del ciel, Pargol divin!</parte>
+    <br />
+    <parte accordo="Fa7">Mite agnello </parte>
+    <parte accordo="SIb">Redentor!</parte>
+    <br />
+    <parte accordo="MIb">Tu disceso a scon</parte>
+    <parte accordo="SIb">tare l'error,</parte>
+    <br />
+    <parte accordo="MIb">Tu sol nato a par</parte>
+    <parte accordo="SIb">lare d'amor,</parte>
+  </strofa>
+  <strofa ref="rit" />
+</canzone>

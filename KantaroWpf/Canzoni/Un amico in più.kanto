@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<canzone title="Un amico in più" variazione="0">
+  <strofa>
+    <parte accordo="Do">Si sveglia la città di </parte>
+    <parte accordo="Fa">fronte a questo </parte>
+    <parte accordo="Sol">mare</parte>
+    <br />
+    <parte accordo="La-">di colori e gioia, </parte>
+    <parte accordo="Fa">parole da can</parte>
+    <parte accordo="Sol">tare.</parte>
+    <br />
+    <parte accordo="Do">Si sveglia la </parte>
+    <parte accordo="Fa">città, non restare </parte>
+    <parte accordo="Sol">solo,</parte>
+    <br />
+    <parte accordo="La-">corri insieme a </parte>
+    <parte accordo="Fa">noi e vieni a </parte>
+    <parte accordo="Sol">colorare.</parte>
+    <br />
+    <parte accordo="Do">Entra nel giar</parte>
+    <parte accordo="Fa">dino della fantasi</parte>
+    <parte accordo="Sol">a,</parte>
+    <br />
+    <parte accordo="La-">incontra amici ve</parte>
+    <parte accordo="Fa">ri per stare in </parte>
+    <parte accordo="Sol">armonia,</parte>
+    <br />
+    <parte accordo="Do">porta insieme a te, </parte>
+    <parte accordo="Fa">alti, magri e </parte>
+    <parte accordo="Sol">grassi,</parte>
+    <br />
+    <parte accordo="La-">vieni insieme a </parte>
+    <parte accordo="Fa">noi canteranno </parte>
+    <parte accordo="Sol">anche i sassi.</parte>
+  </strofa>
+  <strofa name="rit">
+    <parte accordo="Fa">Un amico in più, ti illumina la vita, </parte>
+    <br />
+    <parte>Un </parte>
+    <parte accordo="Do">amico in più, è gioia infinita </parte>
+    <br />
+    <parte accordo="Fa">Un amico in più, ti dona il suo sorriso</parte>
+    <br />
+    <parte accordo="Sol">Un amico in più, colora ciò che è grigio.</parte>
+    <br />
+    <parte accordo="Do">Oh (4 v.) </parte>
+    <parte accordo="Fa">oh (7 v.) </parte>
+    <parte accordo="Sol">oh (4 v.) </parte>
+    <parte accordo="La-">oh (5 v.) </parte>
+    <parte accordo="Fa">(2 vv)</parte>
+    <parte accordo="Sol"></parte>
+  </strofa>
+  <strofa>
+    <parte accordo="Do">Non stare fermo lì, </parte>
+    <parte accordo="Fa">sempre ad aspet</parte>
+    <parte accordo="Sol">tare</parte>
+    <br />
+    <parte accordo="La-">prendi la rincorsa e </parte>
+    <parte accordo="Fa">comincia a colo</parte>
+    <parte accordo="Sol">rare</parte>
+    <br />
+    <parte accordo="Do">tutto il grigio che </parte>
+    <parte accordo="Fa">c'è in questo nostro </parte>
+    <parte accordo="Sol">mondo</parte>
+    <br />
+    <parte accordo="La-">coloriamo insieme, </parte>
+    <parte accordo="Fa">da cima fino in </parte>
+    <parte accordo="Sol">fondo.</parte>
+    <br />
+    <parte accordo="Do">Mentre tu sei qui, </parte>
+    <parte accordo="Fa">con tutta questa </parte>
+    <parte accordo="Sol">gioia,</parte>
+    <br />
+    <parte accordo="La-">c'è qualcuno che </parte>
+    <parte accordo="Fa">forse annega nella </parte>
+    <parte accordo="Sol">noia.</parte>
+    <br />
+    <parte accordo="Do">"Vieni insieme a noi, </parte>
+    <parte accordo="Fa">dai non aspet</parte>
+    <parte accordo="Sol">tare...</parte>
+    <br />
+    <parte accordo="La-">tutto il grigio che c'è </parte>
+    <parte accordo="Fa">dobbiamo colo</parte>
+    <parte accordo="Sol">rare".</parte>
+  </strofa>
+  <strofa ref="rit" />
+</canzone>

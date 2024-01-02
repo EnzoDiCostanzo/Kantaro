@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<canzone title="Alleluia, lodate il Signore" autore="Frisina" variazione="-2">
+  <strofa name="rit">
+    <parte accordo="Re">Alle</parte>
+    <parte accordo="Sol">lu</parte>
+    <parte accordo="Re">ja, </parte>
+    <parte accordo="Mi-">Allelu</parte>
+    <parte accordo="La-">ja</parte>
+    <br />
+    <parte accordo="Sol">lodate il Si</parte>
+    <parte accordo="La">gno</parte>
+    <parte accordo="Re">re;</parte>
+    <br />
+    <parte accordo="Re">Alle</parte>
+    <parte accordo="Sol">lu</parte>
+    <parte accordo="Re">ja, </parte>
+    <parte accordo="Mi-">Allelu</parte>
+    <parte accordo="La-">ja</parte>
+    <br />
+    <parte accordo="Sol">lodate il Si</parte>
+    <parte accordo="La">gno</parte>
+    <parte accordo="Re">re;</parte>
+  </strofa>
+  <strofa>
+    <parte>Lo</parte>
+    <parte accordo="La#">date il Si</parte>
+    <parte accordo="Fa">gnore nel </parte>
+    <parte accordo="La#">suo tempio </parte>
+    <parte accordo="Fa">santo,</parte>
+    <br />
+    <parte>Lo</parte>
+    <parte accordo="Sol-">datelo nell'</parte>
+    <parte accordo="Re-">alto firma</parte>
+    <parte accordo="Do">mento.</parte>
+    <br />
+    <parte>Lo</parte>
+    <parte accordo="La#">datelo nei </parte>
+    <parte accordo="Fa">grandi </parte>
+    <parte accordo="La#">prodigi del </parte>
+    <parte accordo="Fa">suo amore,</parte>
+    <br />
+    <parte>Lo</parte>
+    <parte accordo="Sol-">datene l'</parte>
+    <parte accordo="La-">eccelsa su</parte>
+    <parte accordo="Mi">a </parte>
+    <parte accordo="La">maestà.</parte>
+  </strofa>
+  <strofa ref="rit" />
+</canzone>

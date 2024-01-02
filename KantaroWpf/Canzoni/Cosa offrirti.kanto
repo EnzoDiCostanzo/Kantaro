@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<canzone title="Cosa offrirti">
+  <strofa name="intro">
+    <parte accordo="Fa" />
+    <parte accordo="Do" />
+    <parte accordo="Re-" />
+    <parte accordo="La" />
+    <parte accordo="Fa" />
+    <parte accordo="Do" />
+    <parte accordo="Sol" />
+  </strofa>
+  <strofa>
+    <parte accordo="Do-">Cosa offrirti o </parte>
+    <parte accordo="Sol">Dio, </parte>
+    <parte accordo="SIb">cosa posso </parte>
+    <parte accordo="FA">darti,</parte>
+    <br />
+    <parte accordo="FA-">eccomi son</parte>
+    <parte accordo="DO-"> qui davanti a </parte>
+    <parte accordo="Re7">te.</parte>
+    <parte accordo="Sol" />
+  </strofa>
+  <strofa>
+    <parte accordo="Do-">Le gioie ed i do</parte>
+    <parte accordo="Sol">lori, </parte>
+    <parte accordo="SIb">gli affanni d'ogni </parte>
+    <parte accordo="FA">giorno,</parte>
+    <br />
+    <parte accordo="FA-">tutto voglio </parte>
+    <parte accordo="DO-">vivere in </parte>
+    <parte accordo="Sol">te.</parte>
+    <parte accordo="Do" />
+  </strofa>
+  <strofa name="rit">
+    <parte accordo="Fa7+">Accetta mio </parte>
+    <parte accordo="Do">Re, questo </parte>
+    <parte accordo="Re-">poco che </parte>
+    <parte accordo="La">ho, </parte>
+    <br />
+    <parte accordo="Fa7+">offro a </parte>
+    <parte accordo="Do">te la mia</parte>
+    <parte accordo="SIb"> vi</parte>
+    <parte accordo="Sol">ta, </parte>
+    <!--<parte accordo="Do" />-->
+    <br />
+    <parte accordo="La-">gioia è per </parte>
+    <parte accordo="Do">me far la </parte>
+    <parte accordo="Mi">tua volon</parte>
+    <parte accordo="La-">tà,</parte>
+    <br />
+    <parte>il mio </parte>
+    <parte accordo="Fa">unico </parte>
+    <parte accordo="Do">bene </parte>
+    <parte accordo="Re-">sei solo </parte>
+    <parte accordo="Sol">tu.</parte>
+  </strofa>
+  <strofa ref="intro" />
+  <strofa>
+    <parte accordo="Do-">Vengo a te mio </parte>
+    <parte accordo="Sol">Dio, </parte>
+    <parte accordo="SIb">apro le mie </parte>
+    <parte accordo="FA">braccia,</parte>
+    <br />
+    <parte accordo="FA-">che la tua le</parte>
+    <parte accordo="DO-">tizia riempi</parte>
+    <parte accordo="Re7">rà.</parte>
+    <parte accordo="Sol" />
+  </strofa>
+  <strofa>
+    <parte accordo="Do-">Rinnova questo </parte>
+    <parte accordo="Sol">cuore, </parte>
+    <parte accordo="SIb">perché ti sappia a</parte>
+    <parte accordo="FA">mare</parte>
+    <br />
+    <parte accordo="FA-">e nella tua </parte>
+    <parte accordo="DO-">pace io vi</parte>
+    <parte accordo="Sol">vrò.</parte>
+    <parte accordo="Do" />
+  </strofa>
+  <strofa ref="rit" />
+  <strofa>
+    <parte accordo="Fa" />
+    <parte accordo="Fa-" />
+    <parte accordo="Do" />
+  </strofa>
+</canzone>

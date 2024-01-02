@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<canzone title="Santo" autore="Gen Verde" variazione="-3">
+  <strofa name="santo">
+    <parte accordo="Sol">San</parte>
+    <parte accordo="Do">to, </parte>
+    <parte accordo="Sol">San</parte>
+    <parte accordo="Do">to, </parte>
+    <parte accordo="Sol">San</parte>
+    <parte accordo="Do">to!</parte>
+  </strofa>
+  <strofa>
+    <parte>Il Si</parte>
+    <parte accordo="Do">gnore Dio dell'uni</parte>
+    <parte accordo="Sol">verso</parte>
+    <br />
+    <parte>Il Si</parte>
+    <parte accordo="Do">gnore Dio dell'uni</parte>
+    <parte accordo="Sol">verso</parte>
+    <br />
+    <parte>I ci</parte>
+    <parte accordo="Do">eli e la </parte>
+    <parte accordo="Sol">terra</parte>
+    <br />
+    <parte accordo="Re">sono pieni della tua </parte>
+    <parte accordo="Sol">gloria.</parte>
+  </strofa>
+  <strofa name="osanna">
+    <parte accordo="Do">Osanna, </parte>
+    <parte accordo="Sol6">osanna nell'</parte>
+    <parte accordo="Re4">alto dei </parte>
+    <parte accordo="Sol">cieli</parte>
+  </strofa>
+  <strofa ref="osanna" />
+  <strofa ref="santo" />
+  <strofa>
+    <parte>Bene</parte>
+    <parte accordo="Do">detto Colui che </parte>
+    <parte accordo="Sol">viene</parte>
+    <br />
+    <parte>nel </parte>
+    <parte accordo="Do">nome del Si</parte>
+    <parte accordo="Sol">gnore.</parte>
+    <br />
+    <parte>Bene</parte>
+    <parte accordo="Do">detto Colui che </parte>
+    <parte accordo="Sol">viene</parte>
+    <br />
+    <parte accordo="Re">nel nome del Si</parte>
+    <parte accordo="Sol">gnore</parte>
+  </strofa>
+  <strofa ref="osanna" />
+  <strofa ref="osanna" />
+  <strofa ref="santo" />
+  <strofa ref="santo" />
+</canzone>

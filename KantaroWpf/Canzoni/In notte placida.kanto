@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<canzone title="In notte placida">
+  <strofa name="intro">
+    <parte accordo="Re" />
+    <parte accordo="La" />
+    <parte accordo="Re" />
+    <parte accordo="La" />
+  </strofa>
+  <strofa>
+    <parte accordo="Re">In </parte>
+    <parte accordo="La">notte </parte>
+    <parte accordo="Re">plac</parte>
+    <parte accordo="La">ida, per </parte>
+    <parte accordo="Re">mu</parte>
+    <parte accordo="La">to sen</parte>
+    <parte accordo="Re">tier,</parte>
+    <br />
+    <parte>da</parte>
+    <parte accordo="Re7">i campi del </parte>
+    <parte accordo="Sol">ciel è di</parte>
+    <parte accordo="La">scese l'A</parte>
+    <parte accordo="Fa#-">mor,</parte>
+    <br />
+    <parte>all'</parte>
+    <parte accordo="Si-">alme fe</parte>
+    <parte accordo="Mi-">deli il </parte>
+    <parte accordo="Mi">Reden</parte>
+    <parte accordo="La">tor!</parte>
+  </strofa>
+  <strofa>
+    <parte accordo="Re">Nell'</parte>
+    <parte accordo="La">aura è il </parte>
+    <parte accordo="Re">pal</parte>
+    <parte accordo="La">pito d'un</parte>
+    <parte accordo="Re"> gran</parte>
+    <parte accordo="La">de mi</parte>
+    <parte accordo="Re">ster:</parte>
+    <br />
+    <parte>del </parte>
+    <parte accordo="Re7">nuovo Isra</parte>
+    <parte accordo="Sol">el è </parte>
+    <parte accordo="La">nato il Si</parte>
+    <parte accordo="Fa#-">gnor,</parte>
+    <br />
+    <parte>il </parte>
+    <parte accordo="Si-">fiore più </parte>
+    <parte accordo="Mi-">bello </parte>
+    <parte accordo="La">dei nostri </parte>
+    <parte accordo="Re">fior!</parte>
+    <br />
+    <parte>del </parte>
+    <parte accordo="Re7">nuovo Isra</parte>
+    <parte accordo="Sol">el è </parte>
+    <parte accordo="La">nato il Si</parte>
+    <parte accordo="Fa#-">gnor,</parte>
+    <br />
+    <parte>il </parte>
+    <parte accordo="Si-">fiore più </parte>
+    <parte accordo="Mi-">bello </parte>
+    <parte accordo="La">dei nostri </parte>
+    <parte accordo="Re">fior!</parte>
+  </strofa>
+  <strofa name="rit">
+    <parte accordo="Re-">Cantate, o </parte>
+    <parte accordo="La">popoli, </parte>
+    <parte accordo="Re-">gloria all'Al</parte>
+    <parte accordo="La">tissimo,</parte>
+    <br />
+    <parte accordo="Re-">l'anima a</parte>
+    <parte accordo="La">prite a spe</parte>
+    <parte accordo="Re-">ranza ed a</parte>
+    <parte accordo="La">mor!</parte>
+    <br />
+    <parte accordo="Re-">Cantate, o </parte>
+    <parte accordo="La">popoli, </parte>
+    <parte accordo="Re-">gloria all'Al</parte>
+    <parte accordo="La">tissimo,</parte>
+    <br />
+    <parte accordo="Re-">l'anima a</parte>
+    <parte accordo="La">prite a spe</parte>
+    <parte accordo="Re-">ranza ed a</parte>
+    <parte accordo="La7">mor!</parte>
+  </strofa>
+  <strofa>
+    <parte accordo="Re">Se l'</parte>
+    <parte accordo="La">aura è </parte>
+    <parte accordo="Re">gelida, se fos</parte>
+    <parte accordo="La">co è il </parte>
+    <parte accordo="Re">ciel,</parte>
+    <br />
+    <parte>oh, </parte>
+    <parte accordo="Re7">vieni al mio </parte>
+    <parte accordo="Sol">cuore, </parte>
+    <parte accordo="La">vieni a po</parte>
+    <parte accordo="Fa#-">sar,</parte>
+    <br />
+    <parte>ti </parte>
+    <parte accordo="Si-">vò col mio</parte>
+    <parte accordo="Mi-"> amore </parte>
+    <parte accordo="La">riscal</parte>
+    <parte accordo="Re">dar.</parte>
+    <br />
+    <parte>oh, </parte>
+    <parte accordo="Re7">vieni al mio </parte>
+    <parte accordo="Sol">cuore, </parte>
+    <parte accordo="La">vieni a po</parte>
+    <parte accordo="Fa#-">sar,</parte>
+    <br />
+    <parte>ti </parte>
+    <parte accordo="Si-">vò col mio</parte>
+    <parte accordo="Mi-"> amore </parte>
+    <parte accordo="La">riscal</parte>
+    <parte accordo="Re">dar.</parte>
+  </strofa>
+  <strofa>
+    <parte accordo="Re">Se il </parte>
+    <parte accordo="La">fieno è </parte>
+    <parte accordo="Re">rig</parte>
+    <parte accordo="La">ido, se il </parte>
+    <parte accordo="Re">ven</parte>
+    <parte accordo="La">to è cru</parte>
+    <parte accordo="Re">del,</parte>
+    <br />
+    <parte>un </parte>
+    <parte accordo="Re7">cuore che </parte>
+    <parte accordo="Sol">t'ama </parte>
+    <parte accordo="La">voglio a Te </parte>
+    <parte accordo="Fa#-">dar,</parte>
+    <br />
+    <parte>un </parte>
+    <parte accordo="Si-">sen che Te </parte>
+    <parte accordo="Mi-">brama, </parte>
+    <parte accordo="La">Gesù cul</parte>
+    <parte accordo="Re">lar.</parte>
+  </strofa>
+  <strofa ref="rit" />
+</canzone>

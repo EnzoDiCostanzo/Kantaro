@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<canzone title="Gloria" autore="Marco Frisina">
+  <strofa>
+    <parte accordo="Re">Gloria </parte>
+    <parte accordo="La">in ex</parte>
+    <parte accordo="Sol">celsis </parte>
+    <parte accordo="La">Deo </parte>
+    <parte accordo="Si-">et in </parte>
+    <parte accordo="Fa#-">terra </parte>
+    <parte accordo="Sol">pax ho</parte>
+    <parte accordo="La">minibus</parte>
+    <br />
+    <parte accordo="Re">bonæ </parte>
+    <parte accordo="Si-">volun</parte>
+    <parte accordo="Sol">ta</parte>
+    <parte accordo="Re">tis, </parte>
+    <parte accordo="Mi-">bonæ </parte>
+    <parte accordo="Si-">volun</parte>
+    <parte accordo="Sol">ta</parte>
+    <parte accordo="La" />
+    <parte accordo="Re">tis.</parte>
+  </strofa>
+</canzone>

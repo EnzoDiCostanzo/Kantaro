@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<canzone title="Adeste fideles" variazione="-2">
+  <strofa>
+    <parte accordo="Sol">Adeste, </parte>
+    <parte accordo="Re">fideles, </parte>
+    <parte accordo="Sol">læti </parte>
+    <parte accordo="Do">trium</parte>
+    <parte accordo="Sol">pha</parte>
+    <parte accordo="Re">tes,</parte>
+    <br />
+    <parte accordo="Mi-">veni </parte>
+    <parte accordo="Re">te, </parte>
+    <parte accordo="Re7">venite </parte>
+    <parte accordo="Sol">in Beth</parte>
+    <parte accordo="Re">leh</parte>
+    <parte accordo="La7">em.</parte>
+    <parte accordo="Re" />
+    <br />
+    <parte accordo="Sol">Na</parte>
+    <parte accordo="Re">tum vi</parte>
+    <parte accordo="Do">de</parte>
+    <parte accordo="Sol">te </parte>
+    <parte accordo="Si-">Regem </parte>
+    <parte accordo="Mi-">Ange</parte>
+    <parte accordo="La7">lo</parte>
+    <parte accordo="Re">rum.</parte>
+  </strofa>
+  <strofa name="rit">
+    <parte accordo="Sol">Venite, adoremus, venite, ado</parte>
+    <parte accordo="Re">remus,</parte>
+    <br />
+    <parte accordo="Do">Venite, ado</parte>
+    <parte accordo="Re">re</parte>
+    <parte accordo="Mi-">mus </parte>
+    <parte accordo="Do">Do</parte>
+    <parte accordo="Sol" />
+    <parte accordo="Re">mi</parte>
+    <parte accordo="Sol">num.</parte>
+  </strofa>
+  <strofa>
+    <parte accordo="Sol">En, grege </parte>
+    <parte accordo="Re">relicto </parte>
+    <parte accordo="Sol">humiles </parte>
+    <parte accordo="Do">ad </parte>
+    <parte accordo="Sol">cu</parte>
+    <parte accordo="Re">nas:</parte>
+    <br />
+    <parte accordo="Mi-">voca</parte>
+    <parte accordo="Re">ti, </parte>
+    <parte accordo="Re7">pastores </parte>
+    <parte accordo="Sol">adpro</parte>
+    <parte accordo="Re">per</parte>
+    <parte accordo="La7">ant.</parte>
+    <parte accordo="Re" />
+    <br />
+    <parte accordo="Sol">Et </parte>
+    <parte accordo="Re">nos o</parte>
+    <parte accordo="Do">van</parte>
+    <parte accordo="Sol">tes </parte>
+    <parte accordo="Si-">gratu </parte>
+    <parte accordo="Mi-">festi</parte>
+    <parte accordo="La7">ne</parte>
+    <parte accordo="Re">mus.</parte>
+  </strofa>
+  <strofa ref="rit" />
+  <strofa>
+    <parte accordo="Sol">Æterni </parte>
+    <parte accordo="Re">Parentis, </parte>
+    <parte accordo="Sol">splendo</parte>
+    <parte accordo="Do">rem </parte>
+    <parte accordo="Sol">æter</parte>
+    <parte accordo="Re">num</parte>
+    <br />
+    <parte accordo="Mi-">vela</parte>
+    <parte accordo="Re">tum sub </parte>
+    <parte accordo="Re7">carne </parte>
+    <parte accordo="Sol">vide</parte>
+    <parte accordo="Re">bi</parte>
+    <parte accordo="La7">mus:</parte>
+    <parte accordo="Re" />
+    <br />
+    <parte accordo="Sol">De</parte>
+    <parte accordo="Re">um in</parte>
+    <parte accordo="Do">fan</parte>
+    <parte accordo="Sol">tem, </parte>
+    <parte accordo="Si-">pannis </parte>
+    <parte accordo="Mi-">invo</parte>
+    <parte accordo="La7">lu</parte>
+    <parte accordo="Re">tum.</parte>
+  </strofa>
+  <strofa ref="rit" />
+</canzone>

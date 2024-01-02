@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<canzone title="È Natale" variazione="5">
+  <strofa>
+    <parte accordo="Re">Ecco la stalla di </parte>
+    <parte accordo="Mi-">greccio con l'asino e il </parte>
+    <parte accordo="Fa#-">bove e i pastori di </parte>
+    <parte accordo="Mi-">coccio che accorrono </parte>
+    <parte accordo="Re">già.</parte>
+    <br />
+    <parte accordo="Re">Monti di sughero </parte>
+    <parte accordo="Mi-">prati di muschio col </parte>
+    <parte accordo="Fa#-">gesso per neve lo </parte>
+    <parte accordo="Mi-">specchio per fosso e la </parte>
+    <parte accordo="Re">stella che va.</parte>
+    <br />
+    <parte accordo="La">Ecco la greppia Gi</parte>
+    <parte accordo="Sol">useppe e Maria, </parte>
+    <parte accordo="Re">lassù c'è già l'angelo di cartapesta</parte>
+    <br />
+    <parte>Che </parte>
+    <parte accordo="La">insegna la via che </parte>
+    <parte accordo="Sol">annuncia la festa che il </parte>
+    <parte accordo="Re">mondo lo sappia e che canti così:</parte>
+  </strofa>
+  <strofa name="rit">
+    <parte accordo="Mi-">È Nata</parte>
+    <parte accordo="Sol">le, è </parte>
+    <parte accordo="Re">Natale, è </parte>
+    <parte accordo="Mi-">Nata</parte>
+    <parte accordo="Sol">le </parte>
+    <parte accordo="La">anche </parte>
+    <parte accordo="Re">quì</parte>
+  </strofa>
+  <strofa>
+    <parte accordo="Re">Ecco la stalla di </parte>
+    <parte accordo="Mi-">greccio con l'asino e il </parte>
+    <parte accordo="Fa#-">bove e i pastori di </parte>
+    <parte accordo="Mi-">coccio che accorrono </parte>
+    <parte accordo="Re">già.</parte>
+    <br />
+    <parte accordo="Re">Monti di sughero </parte>
+    <parte accordo="Mi-">prati di muschio col </parte>
+    <parte accordo="Fa#-">gesso per neve lo </parte>
+    <parte accordo="Mi-">specchio per fosso e la </parte>
+    <parte accordo="Re">stella che va.</parte>
+    <br />
+    <parte accordo="La">Carta da zucchero </parte>
+    <parte accordo="Sol">fiocchi di lana </parte>
+    <parte accordo="Re">le stelle e la luna stagnola d'argento.</parte>
+    <br />
+    <parte>La </parte>
+    <parte accordo="La">vecchia che fila, </parte>
+    <parte accordo="Sol">l'agnello che bruca la </parte>
+    <parte accordo="Re">gente che dica e che canti così:</parte>
+  </strofa>
+  <strofa ref="rit" />
+  <strofa ref="rit" />
+  <strofa>
+    <parte accordo="La">Ecco il presepio </parte>
+    <parte accordo="Sol">giocondo che va per il </parte>
+    <parte accordo="Re">mondo per sempre por</parte>
+    <parte accordo="La">tando la buona </parte>
+    <parte accordo="Sol">novella</parte>
+    <br />
+    <parte>Seguendo </parte>
+    <parte accordo="Si-">la stella che splende nel </parte>
+    <parte accordo="Sol">cielo e che annuncia </parte>
+    <parte accordo="La">così:</parte>
+  </strofa>
+  <strofa ref="rit" />
+  <strofa ref="rit" />
+</canzone>

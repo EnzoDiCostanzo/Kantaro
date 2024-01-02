@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<canzone title="Venite fedeli" autore="Stefani">
+  <strofa>
+    <parte accordo="Sol">Venite, </parte>
+    <parte accordo="Re">fedeli, </parte>
+    <parte accordo="Sol">l'Angelo </parte>
+    <parte accordo="Do">c'in</parte>
+    <parte accordo="Sol">vi</parte>
+    <parte accordo="Re">ta,</parte>
+    <br />
+    <parte accordo="Mi-">veni </parte>
+    <parte accordo="Re">te, </parte>
+    <parte accordo="Re7">venite </parte>
+    <parte accordo="Sol">a Bet</parte>
+    <parte accordo="Re">lem</parte>
+    <parte accordo="La7">me.</parte>
+    <parte accordo="Re" />
+  </strofa>
+  <strofa name="rit">
+    <parte accordo="Sol">Na</parte>
+    <parte accordo="Re">sce per </parte>
+    <parte accordo="Do">no</parte>
+    <parte accordo="Sol">i </parte>
+    <parte accordo="Si-">Cristo </parte>
+    <parte accordo="Mi-">Salva</parte>
+    <parte accordo="La7">to</parte>
+    <parte accordo="Re">re.</parte>
+    <br />
+    <parte accordo="Sol">Venite, adoriamo, venite, ado</parte>
+    <parte accordo="Re">riamo,</parte>
+    <br />
+    <parte accordo="Do">Venite, ado</parte>
+    <parte accordo="Re">ria</parte>
+    <parte accordo="Mi-">mo </parte>
+    <parte accordo="Do">il Si</parte>
+    <parte accordo="Sol">gno</parte>
+    <parte accordo="Re">re </parte>
+    <parte accordo="Sol">Gesù.</parte>
+  </strofa>
+  <strofa>
+    <parte accordo="Sol">La luce </parte>
+    <parte accordo="Re">del mondo </parte>
+    <parte accordo="Sol">brilla in </parte>
+    <parte accordo="Do">una </parte>
+    <parte accordo="Sol">grot</parte>
+    <parte accordo="Re">ta:</parte>
+    <br />
+    <parte accordo="Mi-">la fe</parte>
+    <parte accordo="Re">de </parte>
+    <parte accordo="Re7">ci guida </parte>
+    <parte accordo="Sol">a Bet</parte>
+    <parte accordo="Re">lem</parte>
+    <parte accordo="La7">me.</parte>
+    <parte accordo="Re" />
+  </strofa>
+  <strofa ref="rit" />
+  <strofa>
+    <parte accordo="Sol">La notte </parte>
+    <parte accordo="Re">risplende, </parte>
+    <parte accordo="Sol">tutto il </parte>
+    <parte accordo="Do">mondo</parte>
+    <parte accordo="Sol"> atten</parte>
+    <parte accordo="Re">de:</parte>
+    <br />
+    <parte accordo="Mi-">seguia</parte>
+    <parte accordo="Re">mo i </parte>
+    <parte accordo="Re7">pastori </parte>
+    <parte accordo="Sol">a Bet</parte>
+    <parte accordo="Re">lem</parte>
+    <parte accordo="La7">me.</parte>
+    <parte accordo="Re" />
+  </strofa>
+  <strofa ref="rit" />
+</canzone>

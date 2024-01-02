@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://Enzo.DiCostanzo/2015/kanto">
+  <xs:element name="canzone">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" minOccurs="1" name="strofa">
+          <xs:complexType>
+            <xs:sequence minOccurs="0">
+              <xs:choice maxOccurs="unbounded">
+                <xs:element maxOccurs="unbounded" minOccurs="1" name="parte">
+                  <xs:complexType>
+                    <xs:simpleContent>
+                      <xs:extension base="xs:string">
+                        <xs:attribute name="accordo" use="optional">
+                          <xs:simpleType>
+                            <xs:restriction base="xs:string">
+                              <xs:pattern value="D[Oo]{1}[#]{0,1}[-]{0,1}[23456789]{0,1}[0123456789]{0,1}[+]{0,1}" />
+                              <xs:pattern value="R[Ee]{1}[#b]{0,1}[-]{0,1}[23456789]{0,1}[0123456789]{0,1}[+]{0,1}" />
+                              <xs:pattern value="M[Ii]{1}[b]{0,1}[-]{0,1}[23456789]{0,1}[0123456789]{0,1}[+]{0,1}" />
+                              <xs:pattern value="F[Aa]{1}[#]{0,1}[-]{0,1}[23456789]{0,1}[0123456789]{0,1}[+]{0,1}" />
+                              <xs:pattern value="S[Oo]{1}[Ll]{1}[#b]{0,1}[-]{0,1}[23456789]{0,1}[0123456789]{0,1}[+]{0,1}" />
+                              <xs:pattern value="L[Aa]{1}[#b]{0,1}[-]{0,1}[23456789]{0,1}[0123456789]{0,1}[+]{0,1}" />
+                              <xs:pattern value="S[Ii]{1}[b]{0,1}[-]{0,1}[23456789]{0,1}[0123456789]{0,1}[+]{0,1}" />
+                            </xs:restriction>
+                          </xs:simpleType>
+                        </xs:attribute>
+                      </xs:extension>
+                    </xs:simpleContent>
+                  </xs:complexType>
+                </xs:element>
+                <xs:element name="br" />
+              </xs:choice>
+            </xs:sequence>
+            <xs:attribute name="name" type="xs:string" use="optional" />
+            <xs:attribute name="ref" type="xs:string" use="optional" />
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="title" type="xs:string" use="required" />
+      <xs:attribute name="autore" type="xs:string" use="optional" />
+      <xs:attribute name="variazione" type="xs:byte" use="optional" />
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

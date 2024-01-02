@@ -1,0 +1,64 @@
+﻿<Page x:Class="Enzo.Music.KantaroWpf.Views.KantoView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:convs ="clr-namespace:Enzo.Music.KantaroWpf.Converters"
+      xmlns:local="clr-namespace:Enzo.Music.KantaroWpf.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="640"
+      Title="Visualizza">
+    <Page.DataContext>
+        <Binding Source="{StaticResource AppServices}"
+                 Path="KantoViewModel"
+                 />
+    </Page.DataContext>
+    <Page.Triggers>
+        <EventTrigger RoutedEvent="Page.Loaded">
+            <BeginStoryboard>
+                <Storyboard>
+                    <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:0:0.4" />
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </Page.Triggers>
+    <Grid>
+        <Grid.Resources>
+            <convs:CanzoneFlowDocumentConverter x:Key="SongDocumentConverter" />
+            <convs:DistanzaConverter x:Key="distanzaConverter" />
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right"
+                    Grid.Column="1">
+            <Button Command="{Binding CloseCommand}" 
+                    IsCancel="True">
+                <Button.Template>
+                    <ControlTemplate>
+                        <Border CornerRadius="10"
+                                BorderBrush="Red" 
+                                Background="Red"
+                                Width="20">
+                            <TextBlock Foreground="White" Text="X" 
+                                       HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <TextBlock HorizontalAlignment="Left" Text="{Binding Canzone.Titolo}" />
+        </StackPanel>
+        <Grid Grid.RowSpan="2">
+            <Slider Orientation="Vertical" Minimum="-6" Maximum="6" SmallChange="1" LargeChange="2" TickPlacement="BottomRight" Value="{Binding VariazioneInSemitoni}" TickFrequency="1" />
+        </Grid>
+        <FlowDocumentReader Grid.Column="1" Foreground="DimGray" Background="White"
+                            Document="{Binding Canzone, Converter={StaticResource SongDocumentConverter}}"
+                            HorizontalContentAlignment="Left" ViewingMode="Page" IsPrintEnabled="False" IsFindEnabled="False"
+                            IsScrollViewEnabled="False" IsTwoPageViewEnabled="False" IsManipulationEnabled="True" />
+    </Grid>
+</Page>

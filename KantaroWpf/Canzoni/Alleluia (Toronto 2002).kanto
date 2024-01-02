@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<canzone title="Alleluia (Toronto 2002)" variazione="0">
+  <strofa name="rit">
+    <parte accordo="Sol">Alle alleluia </parte>
+    <parte accordo="Do">allelui</parte>
+    <parte accordo="Sol">a</parte>
+    <br />
+    <parte accordo="La-">Alle </parte>
+    <parte accordo="Sol">alleluia </parte>
+    <parte accordo="Re">alle</parte>
+    <parte accordo="Sol">luia</parte>
+    <br />
+    <parte accordo="Sol">Alle alleluia </parte>
+    <parte accordo="Do">allelui</parte>
+    <parte accordo="Sol">a</parte>
+    <br />
+    <parte accordo="La-">Alle </parte>
+    <parte accordo="Sol">alleluia </parte>
+    <parte accordo="Re">alle</parte>
+    <parte accordo="Sol">luia</parte>
+    <br />
+    <parte accordo="La-">Alle </parte>
+    <parte accordo="Sol">alleluia </parte>
+    <parte accordo="Re">alle</parte>
+    <parte accordo="Sol">luia</parte>
+    <br />
+    <parte accordo="La-">Alle </parte>
+    <parte accordo="Sol">alleluia </parte>
+    <parte accordo="Re">alle</parte>
+    <parte accordo="Sol">luia</parte>
+    <br />
+    <parte accordo="Do">Allelu</parte>
+    <parte accordo="Sol">ia.</parte>
+  </strofa>
+  <strofa>
+    <parte accordo="Do">Cristo è risorto dai mo</parte>
+    <parte accordo="Re">rti così</parte>
+    <br />
+    <parte>Or</parte>
+    <parte accordo="Mi-">a vive in </parte>
+    <parte accordo="Re">mezzo a </parte>
+    <parte accordo="Do">noi</parte>
+    <br />
+    <parte accordo="Do">Apri il tuo cuore alla </parte>
+    <parte accordo="Re">sua verità</parte>
+    <br />
+    <parte>E la</parte>
+    <parte accordo="Do"> gioia esplode</parte>
+    <parte accordo="Re">rà.</parte>
+  </strofa>
+  <strofa ref="rit" />
+</canzone>
