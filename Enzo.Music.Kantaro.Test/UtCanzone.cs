@@ -7,10 +7,10 @@ internal class UtCanzone
     [Test]
     public void TestEqualsSuCanzone()
     {
-        var a = GetCanzone(4, 4, true);
-        var b = GetCanzone(4, 4, true);
-        Assert.That(a, Is.EqualTo(a), "La stessa canzone non risulta uguale a se stessa");
-        Assert.That(a, Is.EqualTo(b), "Canzoni identiche non risultano uguali");
+        Canzone a = GetCanzone(4, 4, true);
+        Canzone b = GetCanzone(4, 4, true);
+        Assert.That(a.Equals(a), "La stessa canzone non risulta uguale a se stessa");
+        Assert.That(a.Equals(b), "Canzoni identiche non risultano uguali");
         // Controllo autore
         a.Autore = "Modificato";
         Assert.That(a, Is.Not.EqualTo(b), "Canzoni con Autore diverso risultano uguali");

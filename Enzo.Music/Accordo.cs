@@ -14,16 +14,10 @@ public class Accordo : ICloneable, IAdditionOperators<Accordo, Distanza, Accordo
 {
 
 
-    private struct FormaPreferita
+    private struct FormaPreferita(Scala scala, string testo)
     {
-        public Scala Scala;
-        public string Testo;
-
-        public FormaPreferita(Scala scala, string testo)
-        {
-            Scala = scala;
-            Testo = testo;
-        }
+        public Scala Scala = scala;
+        public string Testo = testo;
     }
 
     public class EstensioneT
@@ -44,7 +38,7 @@ public class Accordo : ICloneable, IAdditionOperators<Accordo, Distanza, Accordo
 
         public override bool Equals(object? obj)
         {
-            if (obj == null || obj is not EstensioneT) return false;
+            if (obj is null || obj is not EstensioneT) return false;
             EstensioneT o = obj as EstensioneT ?? Empty;
             return Valore.Equals(o.Valore) && VariazioneSemitono.Equals(o.VariazioneSemitono);
         }
@@ -75,7 +69,7 @@ public class Accordo : ICloneable, IAdditionOperators<Accordo, Distanza, Accordo
 
         public static bool TryParse(string value, out EstensioneT? result)
         {
-            if (value == null) throw new ArgumentNullException(nameof(value));
+            ArgumentNullException.ThrowIfNull(value);
             EstensioneT r = new();
             if (!string.IsNullOrWhiteSpace(value))
             {
@@ -87,7 +81,7 @@ public class Accordo : ICloneable, IAdditionOperators<Accordo, Distanza, Accordo
                 }
 
                 r.Valore = int.Parse(regEst.Match(value).Value);
-                r.VariazioneSemitono = value.Remove(0, regEst.Match(value).Value.Length) switch
+                r.VariazioneSemitono = value[regEst.Match(value).Value.Length..] switch
                 {
                     "+" => EstensioneVariazioneSemitonoEnum.Aumentato,
                     "dim" => EstensioneVariazioneSemitonoEnum.Diminuito,
@@ -140,7 +134,7 @@ public class Accordo : ICloneable, IAdditionOperators<Accordo, Distanza, Accordo
 
     public Accordo(Scala scala, int num, EstensioneT.EstensioneVariazioneSemitonoEnum varEstensione)
     {
-        if (num <= 0) throw new ArgumentOutOfRangeException(nameof(num));
+        ArgumentOutOfRangeException.ThrowIfNegativeOrZero(num);
         this.scala = scala;
         Estensione = new() { Valore = num, VariazioneSemitono = varEstensione };
     }
@@ -179,31 +173,31 @@ public class Accordo : ICloneable, IAdditionOperators<Accordo, Distanza, Accordo
 
     public static bool operator ==(Accordo? left, Accordo? right)
     {
-        if (left == null || right == null) return false;
+        if (left is null || right is null) return false;
         return left.Equals(right);
     }
 
     public static bool operator !=(Accordo? left, Accordo? right)
     {
-        if (left == null || right == null) return false;
+        if (left is null || right is null) return false;
         return !left.Equals(right);
     }
 
     public override bool Equals(object? obj)
     {
-        if (obj == null || obj is not Accordo) return false;
+        if (obj is null || obj is not Accordo) return false;
         Accordo a = (Accordo)obj;
         bool bScala = a.Scala.Equals(Scala);
-        bool bBasso = Basso == null && a.Basso == null ||
+        bool bBasso = Basso is null && a.Basso is null ||
                       Basso != null && a.Basso != null && Basso.Equals(a.Basso);
-        bool bAlter = Estensione == null && a.Estensione == null ||
+        bool bAlter = Estensione is null && a.Estensione is null ||
                       Estensione != null && a.Estensione != null && Estensione.Equals(a.Estensione);
         return bScala && bAlter && bBasso && bAlter;
     }
 
     public static bool Equals(Accordo? left, Accordo? right)
     {
-        if (left == null || right == null) return false;
+        if (left is null || right is null) return false;
         return left.Equals(right);
     }
 
@@ -211,20 +205,20 @@ public class Accordo : ICloneable, IAdditionOperators<Accordo, Distanza, Accordo
 
     public static bool TryParse(string value, out Accordo? result)
     {
-        if (value == null) throw new ArgumentNullException(nameof(value));
+        ArgumentNullException.ThrowIfNull(value);
         var parti = value.Split("/");
         if (!Scala.TryParse(parti[0], out Scala? sc)) throw new InvalidCastException($"Testo non convertibile in Accordo: {parti[0]}");
-        if (sc == null) throw new InvalidCastException();
+        if (sc is null) throw new InvalidCastException();
         Accordo acc = new(sc, value);
-        if (parti[0].Remove(0, sc.ToString().Length).Length > 0)
+        if (parti[0][sc.ToString().Length..].Length > 0)
         {
-            string temp = parti[0].Remove(0, sc.ToString().Length);
+            string temp = parti[0][sc.ToString().Length..];
             EstensioneT ext = new();
-            string num = new(temp.ToCharArray().TakeWhile(char.IsDigit).ToArray());
+            string num = new([.. temp.ToCharArray().TakeWhile(char.IsDigit)]);
             if (int.TryParse(num, out int valNumb)) ext.Valore = valNumb;
             if (num != temp)
             {
-                ext.VariazioneSemitono = temp.Remove(0, num.Length) switch
+                ext.VariazioneSemitono = temp[num.Length..] switch
                 {
                     "+" => EstensioneT.EstensioneVariazioneSemitonoEnum.Aumentato,
                     "dim" => EstensioneT.EstensioneVariazioneSemitonoEnum.Diminuito,
@@ -273,7 +267,7 @@ public class Accordo : ICloneable, IAdditionOperators<Accordo, Distanza, Accordo
 
     public object Clone()
     {
-        Accordo n = Basso == null ? new(scala, Estensione) : new(scala, Estensione, Basso);
+        Accordo n = Basso is null ? new(scala, Estensione) : new(scala, Estensione, Basso);
         return n;
     }
 }

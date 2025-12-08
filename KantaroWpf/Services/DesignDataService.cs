@@ -28,7 +28,7 @@ namespace Enzo.Music.KantaroWpf.Services
 
         public Task<List<FileElement>> GetFileElementsFromFolderAsync(string folderPath)
         {
-            List<FileElement> ret = new() {
+            List<FileElement> ret = [
                 new FileElement {FileName = "..", FilePath = "c:\\", IsFolder = true, IsPreviousFolder = true, Title = ".."},
                 new FileElement {FileName = "Cartella d'esempio", FilePath = "c:\\temp\\folder1", IsFolder = true, Title = "folder1"},
                 new FileElement {FileName = "kantoj1", FilePath = "c:\\temp\\file1.kantoj", IsListOfFiles = true, Title = "file1.kantoj"},
@@ -36,7 +36,7 @@ namespace Enzo.Music.KantaroWpf.Services
                 new FileElement {FileName = "kanto2", FilePath = "c:\\temp\\file2.kanto", Title = "Altra canzone della lista con nome molto lungo"},
                 new FileElement {FileName = "kanto3", FilePath = "c:\\temp\\file3.kanto", Title = "Canzone con errori", HasErrors = true},
                 new FileElement {FileName = "kanto4", FilePath = "c:\\temp\\file4.kanto", Title = "File mancante", Exists = false}
-                };
+                ];
             return Task.FromResult(ret);
         }
     }

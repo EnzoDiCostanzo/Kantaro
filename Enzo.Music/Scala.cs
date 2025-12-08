@@ -13,8 +13,10 @@ public class Scala : IEqualityOperators<Scala, Scala, bool>
 
     public Scala(Nota notaFondamentale, ModoBase modo)
     {
-        NotaFondamentale = notaFondamentale ?? throw new ArgumentNullException(nameof(notaFondamentale));
-        _Modo = modo ?? throw new ArgumentNullException(nameof(modo));
+        ArgumentNullException.ThrowIfNull(notaFondamentale, nameof(notaFondamentale));
+        ArgumentNullException.ThrowIfNull(modo, nameof(modo));
+        NotaFondamentale = notaFondamentale;
+        _Modo = modo;
     }
     public Nota this[int index]
     {
@@ -23,7 +25,7 @@ public class Scala : IEqualityOperators<Scala, Scala, bool>
             var incrementi = index % Modo.NumeroSuccessioni;
             Nota r = NotaFondamentale;
             for (int i = 0; i <= incrementi - 1; i++)
-                if (!(Modo.Successioni?[i] == null)) r += Modo.Successioni[i];
+                if (!(Modo.Successioni?[i] is null)) r += Modo.Successioni[i];
             return r;
         }
     }
@@ -31,18 +33,18 @@ public class Scala : IEqualityOperators<Scala, Scala, bool>
     #region Verifica uguaglianze
     public static bool operator ==(Scala? left, Scala? right)
     {
-        if (left == null || right == null) return false;
+        if (left is null || right is null) return false;
         return left.Equals(right);
     }
 
     public static bool operator !=(Scala? left, Scala? right)
     {
-        if (left == null || right == null) return false;
+        if (left is null || right is null) return false;
         return !left.Equals(right);
     }
     public override bool Equals(object? obj)
     {
-        if (obj == null) return false;
+        if (obj is null) return false;
         if (obj is not Scala) return false;
         Scala? s = obj as Scala;
         bool bNota = s?.NotaFondamentale?.Equals(NotaFondamentale) ?? false;
@@ -51,7 +53,7 @@ public class Scala : IEqualityOperators<Scala, Scala, bool>
     }
     public static bool Equals(Scala? left, Scala? right)
     {
-        if (left == null || right==null) return false;  
+        if (left is null || right is null) return false;
         return left.Equals(right);
     }
 
@@ -71,7 +73,8 @@ public class Scala : IEqualityOperators<Scala, Scala, bool>
         return ToString().GetHashCode();
     }
 
-    public static bool TryParse(string value, out Scala? result) {
+    public static bool TryParse(string value, out Scala? result)
+    {
         ModoBase? modo;
         if (value.Length > 3 && value.EndsWith("dim", StringComparison.CurrentCultureIgnoreCase))
             value = value[..^3];
@@ -87,15 +90,15 @@ public class Scala : IEqualityOperators<Scala, Scala, bool>
         if (!Nota.TryParse(accordoBase, out Nota? na))
         {
             result = null;
-            return false;
+            //return false;
         }
 
         if (Nota.Equals(nb, na))
             modo = ModoMaggiore.GetInstance();
         else
             modo = ModoMinoreArmonica.GetInstance();
-        
-        result = nb == null ? null : new Scala(nb, modo);
+
+        result = nb is null ? null : new Scala(nb, modo);
         return true;
     }
 }

@@ -21,7 +21,7 @@ public partial class MainWindowViewModel : ObservableRecipient
     public MainWindowViewModel(IDataService dataService)
     {
         this.dataService = dataService;
-        AllFolderElements = new List<FileElement>();
+        AllFolderElements = [];
         folderPath = string.Empty;
         FolderPath = dataService.GetCurrentFolderAsync().Result.ToString();
         FolderElements = CollectionViewSource.GetDefaultView(AllFolderElements);
@@ -116,12 +116,13 @@ public partial class MainWindowViewModel : ObservableRecipient
     private void OnFilterChanged()
     {
         if (FolderElements is null) return;
-        if (string.IsNullOrEmpty(Filter))
+        var filterValue = Filter;
+        if (string.IsNullOrEmpty(filterValue))
             FolderElements.Filter = (e) => !((FileElement)e).IsPreviousFolder;
         else
             FolderElements.Filter = (e) => {
                 FileElement elem = (FileElement)e;
-                return !elem.IsPreviousFolder && (elem.Title?.ToLower().Contains(Filter.ToLower()) ?? false);
+                return !elem.IsPreviousFolder && (elem.Title?.Contains(filterValue, StringComparison.CurrentCultureIgnoreCase) ?? false);
             };
         FolderElements.Refresh();
     }

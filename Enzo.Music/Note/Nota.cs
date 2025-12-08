@@ -81,13 +81,13 @@ public class Nota : IAdditionOperators<Nota, Distanza, Nota>, IAdditionOperators
 
     public override bool Equals(object? obj)
     {
-        if (obj == null || obj is not Nota) return false;
+        if (obj is null || obj is not Nota) return false;
         return Valore.Equals(((Nota?)obj)?.Valore);
     }
 
     public static bool Equals(Nota? obj1, object? obj2)
     {
-        if (obj1 == null || obj2 == null) return false;
+        if (obj1 is null || obj2 is null) return false;
         return obj1.Equals(obj2);
     }
 
@@ -130,7 +130,8 @@ public class Nota : IAdditionOperators<Nota, Distanza, Nota>, IAdditionOperators
     {
         NotaEnum n;
         string testo;
-        if (value.EndsWith("b")) {
+        if (value.EndsWith('b'))
+        {
             if (!Enum.TryParse(value[..^1].ToUpper(), out n))
             {
                 result = null;

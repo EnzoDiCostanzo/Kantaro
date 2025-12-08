@@ -25,15 +25,11 @@ public class Strofa : ICloneable, IEquatable<Strofa>, IEqualityOperators<Strofa,
 
     public bool Equals(Strofa? other)
     {
-        if (other == null) return false;
+        if (other is null) return false;
         bool uguali = string.Equals(Nome, other.Nome) && Parti.Count == other.Parti.Count;
         if (uguali)
         {
-            for (int i = 0; i < Parti.Count; i++)
-            {
-                uguali = Parti[i]?.Equals(other.Parti[i]) ?? false;
-                if (!uguali) break;
-            }
+            uguali = !Parti.Where((p, i) => p is not null && !p.Equals(other.Parti[i])).Any();
         }
         return uguali;
     }
@@ -44,7 +40,8 @@ public class Strofa : ICloneable, IEquatable<Strofa>, IEqualityOperators<Strofa,
 
         return Equals((Strofa)obj);
     }
-    public static new bool Equals(object? obj1, object? obj2) {
+    public static new bool Equals(object? obj1, object? obj2)
+    {
         if (!(obj1 != null && obj2 != null)) return false;
         if (obj1 is not Strofa) return false;
         return ((Strofa)obj1).Equals(obj2);

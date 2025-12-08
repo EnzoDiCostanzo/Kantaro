@@ -9,6 +9,33 @@ namespace Enzo.Music.Kantaro.Test;
 internal class UtDistanza
 {
     [Test]
+    public void TestInit()
+    {
+        var d = new Distanza();
+        Assert.That(d.Valore == 0, "Valore iniziale di Distanza diverso da 0");
+        Assert.That(d.Semitoni == 0, "NumSemitoni iniziale di Distanza diverso da 0");
+        Assert.That(d.Toni == 0, "Toni iniziale di Distanza diverso da 0");
+    }
+
+    [Test]
+    public void TestSemitono()
+    {
+        var d = Semitono.Value;
+        Assert.That(d.Valore == 0.5F, "Valore di Semitono diverso da 0.5");
+        Assert.That(d.Semitoni == 1, "NumSemitoni di Semitono diverso da 1");
+        Assert.That(d.Toni == 0.5F, "Toni di Semitono diverso da 0.5");
+    }
+
+    [Test]
+    public void TestTono()
+    {
+        var d = Tono.Value;
+        Assert.That(d.Valore == 1.0F, "Valore di Tono diverso da 1.0");
+        Assert.That(d.Semitoni == 2, "NumSemitoni di Tono diverso da 2");
+        Assert.That(d.Toni == 1.0F, "Toni di Tono diverso da 1.0");
+    }
+
+    [Test]
     public void TestMethod1()
     {
         var d1 = new Distanza();

@@ -8,6 +8,7 @@ using System.Linq;
 using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Xml;
 using System.Xml.Linq;
 
@@ -20,14 +21,26 @@ class FileSystemDataService : IDataService
 
     public async Task CreateIndexAsync(string folderPath)
     {
-        if (!Path.IsPathRooted(folderPath)) folderPath = Path.GetFullPath(folderPath);
-        string fileName = Path.Combine(folderPath, INDEX_FILE_NAME);
+        string folderFullPath = Path.IsPathRooted(folderPath) ? folderPath : Path.GetFullPath(folderPath);
+        string fileName = Path.Combine(folderFullPath, INDEX_FILE_NAME);
         var canzoni = new Dictionary<string, Canzone?>();
-        if (!Path.Exists(folderPath)) return;
-        foreach (string f in Directory.GetFiles(folderPath, "*.kanto"))
+        if (!Path.Exists(folderFullPath)) return;
+        var kantoFiles = Directory.GetFiles(folderFullPath, "*.kanto");
+        foreach (string f in kantoFiles)
             canzoni.Add(f, await GetCanzoneFromFilePathAsync(f));
-        if (canzoni.Count == 0 && System.IO.File.Exists(fileName))
-            await Task.Run(() => System.IO.File.Delete(fileName));
+        if (canzoni.Count == 0 && File.Exists(fileName))
+            await Task.Run(() =>
+            {
+                try
+                {
+                    if(File.GetAttributes(fileName).HasFlag(FileAttributes.ReadOnly))
+                        File.SetAttributes(fileName, FileAttributes.Normal);
+                    File.Delete(fileName);
+                }
+                catch
+                {
+                }
+            });
         else
         {
             Canzoni canti = new();
@@ -57,7 +70,8 @@ class FileSystemDataService : IDataService
         catch
         {
             return null;
-        };
+        }
+        ;
     }
 
     public async Task<string> GetCurrentFolderAsync()
@@ -105,7 +119,7 @@ class FileSystemDataService : IDataService
                     }
                     string indexFilePath = Path.Combine(folderPath, INDEX_FILE_NAME);
                     var kantoFiles = Directory.GetFiles(folderPath, "*.kanto");
-                    if (trovatoIndexFile && kantoFiles.Any())
+                    if (trovatoIndexFile && kantoFiles.Length != 0)
                     {
                         var kantoFileElements = await GetFileElementsFromKantojAsync(indexFilePath);
                         var lastChange = kantoFiles.Max(File.GetLastWriteTimeUtc);
@@ -143,8 +157,8 @@ class FileSystemDataService : IDataService
                              select Path.Combine(dirPath, k.Value);
             ret = GetFileElementsFromKantoFiles(kantoFiles);
         });
-        ret ??= new List<FileElement>();
-        return new List<FileElement>(ret);
+        ret ??= [];
+        return [.. ret];
     }
 
     private static IEnumerable<FileElement> GetFileElementsFromKantoFiles(IEnumerable<string> kantoFiles)
@@ -178,18 +192,25 @@ class FileSystemDataService : IDataService
                 c.Title = c.FileName;
             ret.Add(c);
         });
-        Parallel.ForEach(ret, c => Task.Run(() =>
+        try
         {
-            try
+            Parallel.ForEach(ret, c => Task.Run(() =>
             {
-                if (c?.FilePath is not null && Canzone.FromXDocument(XDocument.Load(c.FilePath)) is null)
+                try
+                {
+                    if (c?.FilePath is not null && Canzone.FromXDocument(XDocument.Load(c.FilePath)) is null)
+                        c.HasErrors = true;
+                }
+                catch //(Exception ex)
+                {
                     c.HasErrors = true;
-            }
-            catch //(Exception ex)
-            {
-                c.HasErrors = true;
-            }
-        }));
+                }
+            }));
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show(ex.Message, "Error");
+        }
         return ret;
     }
 }

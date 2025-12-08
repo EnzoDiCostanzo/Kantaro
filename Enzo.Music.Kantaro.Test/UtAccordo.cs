@@ -47,7 +47,7 @@ public class UtAccordo
         Assert.That(n1, Is.Not.SameAs(DOmag));
         Accordo acc = (Accordo)n1;
         Assert.That(acc.Scala, Is.EqualTo(DOmag.Scala));
-        Assert.IsNull(acc.Estensione);
+        Assert.That(acc.Estensione.IsEmpty);
         Assert.IsNull(acc.Basso);
     }
 
@@ -59,7 +59,7 @@ public class UtAccordo
         Assert.That(n1, Is.Not.SameAs(DOmin));
         Accordo acc = (Accordo)n1;
         Assert.That(acc.Scala, Is.EqualTo(DOmin.Scala));
-        Assert.IsNull(acc.Estensione);
+        Assert.That(acc.Estensione.IsEmpty);
         Assert.IsNull(acc.Basso);
     }
 
@@ -113,12 +113,12 @@ public class UtAccordo
     {
         var nuovoAccordo = DOmag + Tono.Value;
         Assert.That(nuovoAccordo, Is.EqualTo(REmag), "DO + 1 tono <> RE");
-        Assert.IsNull(nuovoAccordo.Estensione, "Accordo.Estensione valorizzata dopo incremento di un tono dell'accordo di DO maggiore");
+        Assert.That(nuovoAccordo.Estensione.IsEmpty, "Accordo.Estensione valorizzata dopo incremento di un tono dell'accordo di DO maggiore");
         Assert.IsNull(nuovoAccordo.Basso, "Accordo.Basso valorizzato dopo incremento di un tono dell'accordo di DO maggiore");
         Assert.That(nuovoAccordo.ToString().ToUpper(), Is.EqualTo("RE"));
         nuovoAccordo -= Semitono.Value;
         Assert.That(nuovoAccordo, Is.EqualTo(DO_mag), "RE - 1 semitono <> DO#");
-        Assert.IsNull(nuovoAccordo.Estensione, "Accordo.Estensione valorizzata dopo decremento di un semitono dell'accordo di RE maggiore");
+        Assert.That(nuovoAccordo.Estensione.IsEmpty, "Accordo.Estensione valorizzata dopo decremento di un semitono dell'accordo di RE maggiore");
         Assert.IsNull(nuovoAccordo.Basso, "Accordo.Basso valorizzato dopo decremento di un semitono dell'accordo di RE maggiore");
         Assert.That(nuovoAccordo.ToString().ToUpper(), Is.EqualTo("DO#"));
     }
@@ -129,12 +129,12 @@ public class UtAccordo
         Distanza dist = new Distanza { Valore = 1 };
         var nuovoAccordo = DOmag + dist;
         Assert.That(nuovoAccordo, Is.EqualTo(REmag), "DO + 1 tono <> RE");
-        Assert.IsNull(nuovoAccordo.Estensione, "Accordo.Estensione valorizzata dopo incremento di un tono dell'accordo di DO maggiore");
+        Assert.That(nuovoAccordo.Estensione.IsEmpty, "Accordo.Estensione valorizzata dopo incremento di un tono dell'accordo di DO maggiore");
         Assert.IsNull(nuovoAccordo.Basso, "Accordo.Basso valorizzato dopo incremento di un tono dell'accordo di DO maggiore");
         Assert.That(nuovoAccordo.ToString().ToUpper(), Is.EqualTo("RE"));
         nuovoAccordo -= new Distanza {Semitoni = 1};
         Assert.That(nuovoAccordo, Is.EqualTo(DO_mag), "RE - 1 semitono <> DO#");
-        Assert.IsNull(nuovoAccordo.Estensione, "Accordo.Estensione valorizzata dopo decremento di un semitono dell'accordo di RE maggiore");
+        Assert.That(nuovoAccordo.Estensione.IsEmpty, "Accordo.Estensione valorizzata dopo decremento di un semitono dell'accordo di RE maggiore");
         Assert.IsNull(nuovoAccordo.Basso, "Accordo.Basso valorizzato dopo decremento di un semitono dell'accordo di RE maggiore");
         Assert.That(nuovoAccordo.ToString().ToUpper(), Is.EqualTo("DO#"));
     }
@@ -144,9 +144,9 @@ public class UtAccordo
     {
         var nuovoAccordo = (Accordo?)"Do7";
         Assert.IsNotNull(nuovoAccordo, "La conversione dell'accordo Do7 ha restituito il valore 'null'");
-        Assert.IsNotNull(nuovoAccordo.Estensione, "Accordo.Estensione non valorizzata dopo conversione dalla stringa \"Do7\"");
+        Assert.That(!nuovoAccordo.Estensione.IsEmpty, "Accordo.Estensione non valorizzata dopo conversione dalla stringa \"Do7\"");
         nuovoAccordo.Estensione = 4;
-        Assert.IsNotNull(nuovoAccordo.Estensione, "Accordo.Estensione non valorizzata dopo valorizzazione della proprietà sull'accordo di DO maggiore");
+        Assert.That(!nuovoAccordo.Estensione.IsEmpty, "Accordo.Estensione non valorizzata dopo valorizzazione della proprietà sull'accordo di DO maggiore");
         Assert.That(nuovoAccordo.Estensione.Valore, Is.EqualTo(4));
         Assert.That(nuovoAccordo.Estensione.VariazioneSemitono, Is.EqualTo(Accordo.EstensioneT.EstensioneVariazioneSemitonoEnum.None));
         Assert.That(nuovoAccordo, Is.Not.SameAs(DOmag));
@@ -166,7 +166,7 @@ public class UtAccordo
         Accordo DO_7 = (Accordo)DO_mag.Clone();
         DO_7.Estensione = 7;
         Assert.That(nuovoAccordo, Is.EqualTo(DO_7), "RE7 - 1 semitono <> DO#7");
-        Assert.IsNotNull(nuovoAccordo.Estensione, "Accordo.Estensione nulla dopo decremento di un semitono dell'accordo di RE7 maggiore");
+        Assert.That(!nuovoAccordo.Estensione.IsEmpty, "Accordo.Estensione nulla dopo decremento di un semitono dell'accordo di RE7 maggiore");
         Assert.IsNull(nuovoAccordo.Basso, "Accordo.Basso valorizzato dopo decremento di un semitono dell'accordo di RE7 maggiore");
         Assert.That(nuovoAccordo.ToString().ToUpper(), Is.EqualTo("DO#7"));
     }
@@ -202,12 +202,12 @@ public class UtAccordo
     {
         var nuovoAccordo = DOmin + Tono.Value;
         Assert.That(nuovoAccordo, Is.EqualTo(REmin), "DO- + 1 tono <> RE-");
-        Assert.IsNull(nuovoAccordo.Estensione, "Accordo.Estensione valorizzata dopo incremento di un tono dell'accordo di DO minore");
+        Assert.That(nuovoAccordo.Estensione.IsEmpty, "Accordo.Estensione valorizzata dopo incremento di un tono dell'accordo di DO minore");
         Assert.IsNull(nuovoAccordo.Basso, "Accordo.Basso valorizzato dopo incremento di un tono dell'accordo di DO minore");
         Assert.That(nuovoAccordo.ToString().ToUpper(), Is.EqualTo("RE-"));
         nuovoAccordo -= Semitono.Value;
         Assert.That(nuovoAccordo, Is.EqualTo(DO_min), "REmin - 1 semitono <> DO#min");
-        Assert.IsNull(nuovoAccordo.Estensione, "Accordo.Estensione valorizzata dopo decremento di un semitono dell'accordo di RE minore");
+        Assert.That(nuovoAccordo.Estensione.IsEmpty, "Accordo.Estensione valorizzata dopo decremento di un semitono dell'accordo di RE minore");
         Assert.IsNull(nuovoAccordo.Basso, "Accordo.Basso valorizzato dopo decremento di un semitono dell'accordo di RE minore");
         Assert.That(nuovoAccordo.ToString().ToUpper(), Is.EqualTo("DO#-"));
     }
@@ -216,7 +216,7 @@ public class UtAccordo
     public void TestMethod_DOminore7() {
         Accordo nuovoAccordo = (Accordo)DOmin.Clone();
         nuovoAccordo.Estensione = 7;
-        Assert.IsNotNull(nuovoAccordo.Estensione, "Accordo.Estensione non valorizzata dopo valorizzazione della proprietà sull'accordo di DO minore");
+        Assert.That(!nuovoAccordo.Estensione.IsEmpty, "Accordo.Estensione non valorizzata dopo valorizzazione della proprietà sull'accordo di DO minore");
         Assert.That(nuovoAccordo.Estensione.Valore, Is.EqualTo(7));
         Assert.That(nuovoAccordo.Estensione.VariazioneSemitono, Is.EqualTo(Accordo.EstensioneT.EstensioneVariazioneSemitonoEnum.None));
         Assert.That(nuovoAccordo, Is.Not.SameAs(DOmin));
@@ -230,7 +230,7 @@ public class UtAccordo
         Accordo DO_7 = (Accordo)DO_min.Clone();
         DO_7.Estensione = 7;
         Assert.That(nuovoAccordo, Is.EqualTo(DO_7), "RE-7 - 1 semitono <> DO#-7");
-        Assert.IsNotNull(nuovoAccordo.Estensione, "Accordo.Estensione nulla dopo decremento di un semitono dell'accordo di RE-7");
+        Assert.That(!nuovoAccordo.Estensione.IsEmpty, "Accordo.Estensione nulla dopo decremento di un semitono dell'accordo di RE-7");
         Assert.IsNull(nuovoAccordo.Basso, "Accordo.Basso valorizzato dopo decremento di un semitono dell'accordo di RE-7");
         Assert.That(nuovoAccordo.ToString().ToUpper(), Is.EqualTo("DO#-7"));
     }

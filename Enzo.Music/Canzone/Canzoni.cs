@@ -62,7 +62,7 @@ public class Canzoni
             XElement k = new("kanto") { Value = c.FilePath };
             if (!string.IsNullOrEmpty(c.Title))
                 k.SetAttributeValue("title", c.Title);
-            if (doc.Root?.LastNode == null)
+            if (doc.Root?.LastNode is null)
                 doc.Root?.AddFirst(k);
             else
                 doc.Root.LastNode.AddAfterSelf(k);

@@ -16,7 +16,7 @@ public class Canzone : IEquatable<Canzone>, IEqualityOperators<Canzone, Canzone,
     public string? Titolo { get; set; }
     public string? Autore { get; set; }
 
-    public readonly List<Strofa> Strofe = new();
+    public readonly List<Strofa> Strofe = [];
 
     /// <summary>
     /// Descrizione della canzone (costituita dal titolo + l'autore se presente)
@@ -35,13 +35,13 @@ public class Canzone : IEquatable<Canzone>, IEqualityOperators<Canzone, Canzone,
 
     public static async Task<Canzone?> FromStreamAsync(StreamReader stream)
     {
-        if (stream is null) throw new ArgumentNullException(nameof(stream));
+        ArgumentNullException.ThrowIfNull(stream);
         return FromXDocument(await LoadXDocumentAsync(stream).ConfigureAwait(false));
     }
 
     public static async Task<XDocument?> LoadXDocumentAsync(StreamReader stream)
     {
-        if (stream is null) throw new ArgumentNullException(nameof(stream));
+        ArgumentNullException.ThrowIfNull(stream);
         var t = new Task<XDocument?>(() =>
         {
             try
@@ -69,7 +69,7 @@ public class Canzone : IEquatable<Canzone>, IEqualityOperators<Canzone, Canzone,
             };
             if (int.TryParse(document.Element("Canzone")?.Attribute("variazione")?.Value, out int variazione))
                 song.VariazioneInSemitoni = variazione;
-            foreach (XElement st in document.Element("canzone")?.Elements("strofa") ?? new List<XElement>())
+            foreach (XElement st in document.Element("canzone")?.Elements("strofa") ?? [])
             {
                 if (!string.IsNullOrWhiteSpace(st.Attribute("ref")?.Value))
                 {
@@ -138,7 +138,7 @@ public class Canzone : IEquatable<Canzone>, IEqualityOperators<Canzone, Canzone,
 
     public IList<Strofa> GetStrofe()
     {
-        List<Strofa> ret = new();
+        List<Strofa> ret = [];
         foreach (var s in Strofe)
         {
             Strofa n = (Strofa)s.Clone();
@@ -147,7 +147,7 @@ public class Canzone : IEquatable<Canzone>, IEqualityOperators<Canzone, Canzone,
                 Distanza dist = new() { Semitoni = VariazioneInSemitoni };
                 foreach (var p in n.Parti)
                 {
-                    if (p == null) continue;
+                    if (p is null) continue;
                     if (p.Accordo != null)
                         p.Accordo += dist;
                 }
@@ -159,7 +159,7 @@ public class Canzone : IEquatable<Canzone>, IEqualityOperators<Canzone, Canzone,
 
     public bool Equals(Canzone? other)
     {
-        if (other == null) return false;
+        if (other is null) return false;
         var uguali = string.Equals(Autore, other.Autore) &&
                      string.Equals(Titolo, other.Titolo) &&
                      VariazioneInSemitoni == other.VariazioneInSemitoni;
@@ -177,7 +177,7 @@ public class Canzone : IEquatable<Canzone>, IEqualityOperators<Canzone, Canzone,
 
     public static bool Equals(Canzone? obj1, Canzone? obj2)
     {
-        if (obj1 == null || obj2 == null) return false;
+        if (obj1 is null || obj2 is null) return false;
         return obj1.Equals(obj2);
     }
 
@@ -189,13 +189,13 @@ public class Canzone : IEquatable<Canzone>, IEqualityOperators<Canzone, Canzone,
 
     public static bool operator ==(Canzone? left, Canzone? right)
     {
-        if (left == null || right == null) return false;
+        if (left is null || right is null) return false;
         return left.Equals(right);
     }
 
     public static bool operator !=(Canzone? left, Canzone? right)
     {
-        if (left == null || right == null) return false;
+        if (left is null || right is null) return false;
         return !left.Equals(right);
     }
 

@@ -11,7 +11,7 @@ public class Distanza : IAdditionOperators<Distanza, Distanza, Distanza>, IAddit
     /// <summary>
     /// Valore che indica la distanza in Toni
     /// </summary>
-    public float Toni => Semitoni/2;
+    public float Toni => (float)Semitoni/2;
 
     /// <summary>
     /// Valore che indica la distanza in semitoni
@@ -23,14 +23,14 @@ public class Distanza : IAdditionOperators<Distanza, Distanza, Distanza>, IAddit
     /// </summary>
     public float Valore
     {
-        get => Semitoni / 2;
+        get => (float)Semitoni / 2;
         set
         {
             if (2 * value % 1 != 0) // Consente la conversione solo per i valori interi o con il ".5"
             {
                 throw new ArgumentOutOfRangeException(nameof(value), "Impossibile convertire il valore in Toni e Semitoni");
             }
-            Semitoni =(int)value * 2;
+            Semitoni =(int)(value * 2);
         }
     }
 
