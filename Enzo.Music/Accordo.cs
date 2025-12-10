@@ -189,9 +189,9 @@ public class Accordo : ICloneable, IAdditionOperators<Accordo, Distanza, Accordo
         Accordo a = (Accordo)obj;
         bool bScala = a.Scala.Equals(Scala);
         bool bBasso = Basso is null && a.Basso is null ||
-                      Basso != null && a.Basso != null && Basso.Equals(a.Basso);
+                      Basso is not null && a.Basso is not null && Basso.Equals(a.Basso);
         bool bAlter = Estensione is null && a.Estensione is null ||
-                      Estensione != null && a.Estensione != null && Estensione.Equals(a.Estensione);
+                      Estensione is not null && a.Estensione is not null && Estensione.Equals(a.Estensione);
         return bScala && bAlter && bBasso && bAlter;
     }
 
@@ -251,8 +251,8 @@ public class Accordo : ICloneable, IAdditionOperators<Accordo, Distanza, Accordo
         System.Text.StringBuilder sb = new();
         sb.Append(Scala.ToString(bemollePrefer));
         if (Scala.Modo is ModoMinoreArmonica) sb.Append('-');
-        if (Estensione != null) sb.Append(Estensione.ToString());
-        if (Basso != null)
+        if (Estensione is not null) sb.Append(Estensione.ToString());
+        if (Basso is not null)
         {
             sb.Append('/');
             sb.Append(Basso.ToString());

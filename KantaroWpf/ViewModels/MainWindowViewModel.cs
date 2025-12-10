@@ -75,7 +75,7 @@ public partial class MainWindowViewModel : ObservableRecipient
     [RelayCommand]
     public void GoPrevious()
     {
-        if (FolderPath == null) return;
+        if (FolderPath is null) return;
         FolderPath = Path.GetDirectoryName(FolderPath) ?? string.Empty;
         SelectedFileElement = FileElement.Empty;
     }

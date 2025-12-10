@@ -18,6 +18,10 @@ public class Canzone : IEquatable<Canzone>, IEqualityOperators<Canzone, Canzone,
 
     public readonly List<Strofa> Strofe = [];
 
+    public string? ErrorMessage { get; set; }
+
+    public bool HasErrors { get => !string.IsNullOrEmpty(ErrorMessage); }
+
     /// <summary>
     /// Descrizione della canzone (costituita dal titolo + l'autore se presente)
     /// </summary>
@@ -26,7 +30,7 @@ public class Canzone : IEquatable<Canzone>, IEqualityOperators<Canzone, Canzone,
         get
         {
             StringBuilder sb = new();
-            if (Titolo != null) sb.Append(Titolo);
+            if (Titolo is not null) sb.Append(Titolo);
             if (!string.IsNullOrWhiteSpace(Autore))
                 sb.Append($" ({Autore})");
             return sb.ToString();
@@ -67,37 +71,45 @@ public class Canzone : IEquatable<Canzone>, IEqualityOperators<Canzone, Canzone,
                 Titolo = document.Element("Canzone")?.Attribute("Titolo")?.Value ?? string.Empty,
                 Autore = document.Element("Canzone")?.Attribute("Autore")?.Value ?? string.Empty
             };
-            if (int.TryParse(document.Element("Canzone")?.Attribute("variazione")?.Value, out int variazione))
-                song.VariazioneInSemitoni = variazione;
-            foreach (XElement st in document.Element("canzone")?.Elements("strofa") ?? [])
+            try
             {
-                if (!string.IsNullOrWhiteSpace(st.Attribute("ref")?.Value))
+                if (int.TryParse(document.Element("Canzone")?.Attribute("variazione")?.Value, out int variazione))
+                    song.VariazioneInSemitoni = variazione;
+                foreach (XElement st in document.Element("canzone")?.Elements("strofa") ?? [])
                 {
-                    song.Strofe.Add(new StrofaRipetuta(st.Attribute("ref")?.Value ?? string.Empty));
-                    continue;
-                }
-                Strofa strofa = new();
-                foreach (XElement elem in st.Elements())
-                {
-                    Parte? p = null;
-                    if (elem.Name == "parte")
+                    if (!string.IsNullOrWhiteSpace(st.Attribute("ref")?.Value))
                     {
-                        p = new Parte();
-                        if (!string.IsNullOrWhiteSpace(elem.Attribute("accordo")?.Value))
-                            p.Accordo = (Accordo?)(elem.Attribute("accordo")?.Value ?? string.Empty);
-                        if (!elem.IsEmpty) p.Testo = elem.Value;
+                        song.Strofe.Add(new StrofaRipetuta(st.Attribute("ref")?.Value ?? string.Empty));
+                        continue;
                     }
-                    strofa.Parti.Add(p);
+                    Strofa strofa = new();
+                    foreach (XElement elem in st.Elements())
+                    {
+                        Parte? p = null;
+                        if (elem.Name == "parte")
+                        {
+                            p = new Parte();
+                            if (!string.IsNullOrWhiteSpace(elem.Attribute("accordo")?.Value))
+                                p.Accordo = (Accordo?)(elem.Attribute("accordo")?.Value ?? string.Empty);
+                            if (!elem.IsEmpty) p.Testo = elem.Value;
+                        }
+                        strofa.Parti.Add(p);
+                    }
+                    if (!string.IsNullOrWhiteSpace(st.Attribute("name")?.Value))
+                        strofa.Nome = st.Attribute("name")?.Value;
+                    song.Strofe.Add(strofa);
                 }
-                if (!string.IsNullOrWhiteSpace(st.Attribute("name")?.Value))
-                    strofa.Nome = st.Attribute("name")?.Value;
-                song.Strofe.Add(strofa);
+            }
+            catch (Exception ex)
+            {
+                var e = new Exception(ex.Message, ex) { Source = document.ToString() };
+                song.ErrorMessage = e.ToString();
             }
             return song;
         }
         catch (Exception ex)
         {
-            throw new Exception(ex.Message, ex) { Source = document.ToString() };
+            throw new Exception(ex.Message, ex);
         }
     }
 
@@ -105,8 +117,8 @@ public class Canzone : IEquatable<Canzone>, IEqualityOperators<Canzone, Canzone,
     {
         XDocument d = new();
         XElement root = new("canzone");
-        if (Titolo != null) root.Add(new XAttribute("title", Titolo));
-        if (Autore != null) root.Add(new XAttribute("autore", Autore));
+        if (Titolo is not null) root.Add(new XAttribute("title", Titolo));
+        if (Autore is not null) root.Add(new XAttribute("autore", Autore));
         if (VariazioneInSemitoni != 0) root.Add(new XAttribute("variazione", VariazioneInSemitoni));
         foreach (var st in Strofe)
         {
@@ -122,9 +134,9 @@ public class Canzone : IEquatable<Canzone>, IEqualityOperators<Canzone, Canzone,
                     else
                     {
                         XElement parte = new("parte");
-                        if (p.Accordo != null)
+                        if (p.Accordo is not null)
                             parte.Add(new XAttribute("accordo", p.Accordo.ToString()));
-                        if (p.Testo != null)
+                        if (p.Testo is not null)
                             parte.Value = p.Testo;
                         strofa.Add(parte);
                     }
@@ -148,7 +160,7 @@ public class Canzone : IEquatable<Canzone>, IEqualityOperators<Canzone, Canzone,
                 foreach (var p in n.Parti)
                 {
                     if (p is null) continue;
-                    if (p.Accordo != null)
+                    if (p.Accordo is not null)
                         p.Accordo += dist;
                 }
             }
@@ -201,8 +213,8 @@ public class Canzone : IEquatable<Canzone>, IEqualityOperators<Canzone, Canzone,
 
     public override int GetHashCode()
     {
-        var hc = (Titolo??string.Empty).GetHashCode() 
-            ^ (Autore??string.Empty).GetHashCode() 
+        var hc = (Titolo ?? string.Empty).GetHashCode()
+            ^ (Autore ?? string.Empty).GetHashCode()
             ^ VariazioneInSemitoni.GetHashCode();
         hc ^= Strofe.GetHashCode();
         return hc;

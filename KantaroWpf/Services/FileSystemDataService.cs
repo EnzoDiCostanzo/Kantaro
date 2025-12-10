@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Net.NetworkInformation;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Xml;
@@ -33,7 +34,7 @@ class FileSystemDataService : IDataService
             {
                 try
                 {
-                    if(File.GetAttributes(fileName).HasFlag(FileAttributes.ReadOnly))
+                    if (File.GetAttributes(fileName).HasFlag(FileAttributes.ReadOnly))
                         File.SetAttributes(fileName, FileAttributes.Normal);
                     File.Delete(fileName);
                 }
@@ -99,24 +100,29 @@ class FileSystemDataService : IDataService
             {
                 if (Directory.Exists(folderPath))
                 {
-                    foreach (string f in Directory.GetDirectories(folderPath))
+                    var t0 = Task.Run(() =>
                     {
-                        var fn = Path.GetFileName(f);
-                        var e = new FileElement { FileName = fn, Title = fn, FilePath = f, IsFolder = true, Exists = true };
-                        ret.Add(e);
-                    }
-                    bool trovatoIndexFile = false;
-                    foreach (string f in Directory.GetFiles(folderPath, "*.kantoj"))
-                    {
-                        if (Path.GetFileName(f) == INDEX_FILE_NAME)
+                        foreach (string f in Directory.GetDirectories(folderPath))
                         {
-                            trovatoIndexFile = true;
-                            continue;
+                            var fn = Path.GetFileName(f);
+                            ret.Add(new FileElement { FileName = fn, Title = fn, FilePath = f, IsFolder = true, Exists = true });
                         }
-                        string fn = Path.GetFileNameWithoutExtension(f);
-                        var e = new FileElement { FileName = fn, Title = fn, FilePath = f, IsListOfFiles = true, Exists = true };
-                        ret.Add(e);
-                    }
+                    });
+                    bool trovatoIndexFile = false;
+                    var t1 = Task.Run(() =>
+                    {
+                        foreach (string f in Directory.GetFiles(folderPath, "*.kantoj"))
+                        {
+                            if (Path.GetFileName(f) == INDEX_FILE_NAME)
+                            {
+                                trovatoIndexFile = true;
+                                continue;
+                            }
+                            string fn = Path.GetFileNameWithoutExtension(f);
+                            ret.Add(new FileElement { FileName = fn, Title = fn, FilePath = f, IsListOfFiles = true, Exists = true });
+                        }
+                    });
+                    Task.WaitAll(t0, t1);
                     string indexFilePath = Path.Combine(folderPath, INDEX_FILE_NAME);
                     var kantoFiles = Directory.GetFiles(folderPath, "*.kanto");
                     if (trovatoIndexFile && kantoFiles.Length != 0)

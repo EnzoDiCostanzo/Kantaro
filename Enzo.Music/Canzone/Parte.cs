@@ -10,8 +10,8 @@ public class Parte : ICloneable, IEquatable<Parte>, IEqualityOperators<Parte, Pa
     public object Clone()
     {
         Parte p = new();
-        if (Accordo != null) p.Accordo = Accordo.Clone() as Accordo;
-        if (Testo != null) p.Testo = Testo;
+        if (Accordo is not null) p.Accordo = Accordo.Clone() as Accordo;
+        if (Testo is not null) p.Testo = Testo;
         return p;
     }
 

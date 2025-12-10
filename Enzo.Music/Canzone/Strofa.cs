@@ -42,7 +42,7 @@ public class Strofa : ICloneable, IEquatable<Strofa>, IEqualityOperators<Strofa,
     }
     public static new bool Equals(object? obj1, object? obj2)
     {
-        if (!(obj1 != null && obj2 != null)) return false;
+        if (!(obj1 is not null && obj2 is not null)) return false;
         if (obj1 is not Strofa) return false;
         return ((Strofa)obj1).Equals(obj2);
     }
