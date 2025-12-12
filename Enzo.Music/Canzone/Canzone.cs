@@ -68,12 +68,12 @@ public class Canzone : IEquatable<Canzone>, IEqualityOperators<Canzone, Canzone,
         {
             Canzone song = new()
             {
-                Titolo = document.Element("Canzone")?.Attribute("Titolo")?.Value ?? string.Empty,
-                Autore = document.Element("Canzone")?.Attribute("Autore")?.Value ?? string.Empty
+                Titolo = document.Element("canzone")?.Attribute("title")?.Value ?? string.Empty,
+                Autore = document.Element("canzone")?.Attribute("autore")?.Value ?? string.Empty
             };
             try
             {
-                if (int.TryParse(document.Element("Canzone")?.Attribute("variazione")?.Value, out int variazione))
+                if (int.TryParse(document.Element("canzone")?.Attribute("variazione")?.Value, out int variazione))
                     song.VariazioneInSemitoni = variazione;
                 foreach (XElement st in document.Element("canzone")?.Elements("strofa") ?? [])
                 {
