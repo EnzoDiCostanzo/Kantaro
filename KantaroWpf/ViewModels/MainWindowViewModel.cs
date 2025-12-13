@@ -61,8 +61,8 @@ public partial class MainWindowViewModel : ObservableRecipient
         Canzone = null;
     }
 
-    private FileElement selectedFileElement;
-    public FileElement SelectedFileElement
+    private FileElement? selectedFileElement;
+    public FileElement? SelectedFileElement
     {
         get => selectedFileElement;
         set
@@ -180,6 +180,7 @@ public partial class MainWindowViewModel : ObservableRecipient
     [NotifyPropertyChangedFor(nameof(ShowSong))]
     [NotifyPropertyChangedFor(nameof(ShowFiles))]
     [NotifyPropertyChangedFor(nameof(WindowTitle))]
+    [NotifyPropertyChangedFor(nameof(CanGoPrevious))]
     private Canzone? canzone;
 
     public bool ShowFiles => Canzone is null;
@@ -205,6 +206,7 @@ public partial class MainWindowViewModel : ObservableRecipient
     [RelayCommand]
     public void CloseSong()
     {
+        if (SelectedFileElement is not null) SelectedFileElement = null;
         if (Canzone is not null) Canzone = null;
     }
     #endregion
