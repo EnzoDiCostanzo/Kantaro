@@ -4,6 +4,7 @@ using Enzo.Music.KantaroWpf.Models;
 using Enzo.Music.KantaroWpf.Services;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
@@ -22,9 +23,10 @@ public partial class MainWindowViewModel : ObservableRecipient
     {
         this.dataService = dataService;
         AllFolderElements = [];
+        FilteredFolderElements = [];
         folderPath = string.Empty;
         FolderPath = dataService.GetCurrentFolderAsync().Result.ToString();
-        FolderElements = CollectionViewSource.GetDefaultView(AllFolderElements);
+        FolderElements = CollectionViewSource.GetDefaultView(FilteredFolderElements);
         selectedFileElement = FileElement.Empty;
         SelectedFileElement = FileElement.Empty;
     }
@@ -70,7 +72,7 @@ public partial class MainWindowViewModel : ObservableRecipient
         }
     }
 
-    public bool CanGoPrevious => AllFolderElements?.FirstOrDefault(f => f.IsPreviousFolder) is not null;
+    public bool CanGoPrevious => !ShowSong && ((SelectedFileElement?.IsContainer ?? false) || AllFolderElements?.FirstOrDefault(f => f.IsPreviousFolder) is not null);
 
     [RelayCommand]
     public void GoPrevious()
@@ -99,6 +101,7 @@ public partial class MainWindowViewModel : ObservableRecipient
     }
 
     private readonly List<FileElement> AllFolderElements;
+    public readonly ObservableCollection<FileElement> FilteredFolderElements;
 
     [ObservableProperty]
     private ICollectionView folderElements;
@@ -115,16 +118,22 @@ public partial class MainWindowViewModel : ObservableRecipient
     }
     private void OnFilterChanged()
     {
-        if (FolderElements is null) return;
         var filterValue = Filter;
+        FilteredFolderElements.Clear();
         if (string.IsNullOrEmpty(filterValue))
-            FolderElements.Filter = (e) => !((FileElement)e).IsPreviousFolder;
+            foreach (var f in AllFolderElements.Where(f => !f.IsPreviousFolder))
+            {
+                FilteredFolderElements.Add(f);
+            }
         else
-            FolderElements.Filter = (e) => {
-                FileElement elem = (FileElement)e;
+            foreach (var f in AllFolderElements.Where(f =>
+            {
+                var elem = (FileElement)f;
                 return !elem.IsPreviousFolder && (elem.Title?.Contains(filterValue, StringComparison.CurrentCultureIgnoreCase) ?? false);
+            }))
+            {
+                FilteredFolderElements.Add(f);
             };
-        FolderElements.Refresh();
     }
 
     [RelayCommand]
@@ -158,6 +167,7 @@ public partial class MainWindowViewModel : ObservableRecipient
         finally
         {
             Task.WaitAll();
+            OnPropertyChanged(nameof(CanGoPrevious));
             IsWorking = saveIsWorking;
         }
     }
