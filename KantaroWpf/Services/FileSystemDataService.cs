@@ -46,7 +46,7 @@ class FileSystemDataService : IDataService
         {
             Canzoni canti = new();
             foreach (var dicElem in canzoni)
-                canti.Add(dicElem.Key, dicElem.Value?.Titolo ?? String.Empty);
+                canti.Add(dicElem.Key, dicElem.Value?.Titolo ?? string.Empty);
             if (canti.Items.Any())
             {
                 var x = canti.ToXDocument();

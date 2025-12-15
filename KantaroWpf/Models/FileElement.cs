@@ -58,6 +58,7 @@ public class FileElement
     /// Titolo della canzone. Per i file di tipo Container (cartelle o file .kantoj) il valore è null (Nothing in Visual Basic).
     /// </summary>
     public string? Title { get; set; }
+
     /// <summary>
     /// Negazione della proprietà IsContainer.
     /// Il valore true indica che il file è di tipo Canzone.

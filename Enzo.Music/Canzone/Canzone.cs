@@ -18,6 +18,11 @@ public class Canzone : IEquatable<Canzone>, IEqualityOperators<Canzone, Canzone,
 
     public readonly List<Strofa> Strofe = [];
 
+    /// <summary>
+    /// Raw text dal file sorgente.
+    /// </summary>
+    private string? OriginalRawText { get; set; }
+
     public string? ErrorMessage { get; set; }
 
     public bool HasErrors { get => !string.IsNullOrEmpty(ErrorMessage); }
@@ -69,8 +74,10 @@ public class Canzone : IEquatable<Canzone>, IEqualityOperators<Canzone, Canzone,
             Canzone song = new()
             {
                 Titolo = document.Element("canzone")?.Attribute("title")?.Value ?? string.Empty,
-                Autore = document.Element("canzone")?.Attribute("autore")?.Value ?? string.Empty
+                Autore = document.Element("canzone")?.Attribute("autore")?.Value ?? string.Empty,
+                OriginalRawText = document.ToString()
             };
+            
             try
             {
                 if (int.TryParse(document.Element("canzone")?.Attribute("variazione")?.Value, out int variazione))

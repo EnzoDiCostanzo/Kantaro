@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Enzo.Music.KantaroWpf.Converters;
 using Enzo.Music.KantaroWpf.Models;
 using Enzo.Music.KantaroWpf.Services;
 using System;
@@ -8,9 +9,14 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
+using System.Reflection.Metadata;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Windows.Data;
+using System.Windows.Documents;
+using System.Xml.Linq;
 
 namespace Enzo.Music.KantaroWpf.ViewModels;
 
@@ -133,7 +139,8 @@ public partial class MainWindowViewModel : ObservableRecipient
             }))
             {
                 FilteredFolderElements.Add(f);
-            };
+            }
+        ;
     }
 
     [RelayCommand]
@@ -169,6 +176,45 @@ public partial class MainWindowViewModel : ObservableRecipient
             Task.WaitAll();
             OnPropertyChanged(nameof(CanGoPrevious));
             IsWorking = saveIsWorking;
+        }
+    }
+
+    [RelayCommand]
+    public async Task PrintFilteredSongsAsync()
+    {
+        if (FilteredFolderElements.Count == 0) return;
+        FlowDocument document = new FlowDocument();
+        var cfdConv = new CanzoneFlowDocumentConverter();
+        var description = (Path.GetExtension(FolderPath) == ".kantoj") ? $"Kantoj - {Path.GetFileNameWithoutExtension(FolderPath)}" : SelectedFileElement?.FileName ?? "Folder";
+        foreach (var fe in FilteredFolderElements.Where(f => f.Exists && !f.HasErrors && !f.IsContainer))
+        {
+            var canzone = await dataService.GetCanzoneFromFilePathAsync(fe.FilePath!);
+            if (canzone is not null)
+            {
+                document.Blocks.Add(cfdConv.GetSection(canzone));
+            }
+        }
+        PrintFlowDocument(document, description);
+    }
+    private void PrintFlowDocument(FlowDocument document, string description)
+    {
+        var pd = new PrintDialog() { };
+        if (pd.ShowDialog() == true)
+        {
+            var printDoc = CloneFlowDocument(document);
+            printDoc.PageHeight = pd.PrintableAreaHeight;
+            printDoc.PageWidth = pd.PrintableAreaWidth;
+            IDocumentPaginatorSource idpSource = printDoc;
+            pd.PrintDocument(idpSource.DocumentPaginator, description);
+        }
+    }
+    private FlowDocument CloneFlowDocument(FlowDocument original)
+    {
+        string xaml = System.Windows.Markup.XamlWriter.Save(original);
+        using (var stringReader = new System.IO.StringReader(xaml))
+        using (var xmlReader = System.Xml.XmlReader.Create(stringReader))
+        {
+            return (FlowDocument)System.Windows.Markup.XamlReader.Load(xmlReader);
         }
     }
     #endregion
@@ -208,6 +254,20 @@ public partial class MainWindowViewModel : ObservableRecipient
     {
         if (SelectedFileElement is not null) SelectedFileElement = null;
         if (Canzone is not null) Canzone = null;
+    }
+
+    [RelayCommand]
+    public void PrintSong()
+    {
+        if (Canzone is null) return;
+        PrintSong(Canzone);
+    }
+
+    private void PrintSong(Canzone canzone)
+    {
+        var cfdConv = new CanzoneFlowDocumentConverter();
+        var d = (FlowDocument)cfdConv.Convert(canzone, new FlowDocument().GetType(), string.Empty, System.Globalization.CultureInfo.CurrentCulture);
+        PrintFlowDocument(d, $"Kanto {canzone.Titolo}");
     }
     #endregion
 }

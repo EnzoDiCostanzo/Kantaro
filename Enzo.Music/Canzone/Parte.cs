@@ -18,7 +18,7 @@ public class Parte : ICloneable, IEquatable<Parte>, IEqualityOperators<Parte, Pa
     public bool Equals(Parte? other)
     {
         if (other is null) return false;
-        bool uguali = String.Equals(Testo, other.Testo) && ((Accordo is null && other.Accordo is null) || Accordo.Equals(Accordo, other.Accordo));
+        bool uguali = string.Equals(Testo, other.Testo) && ((Accordo is null && other.Accordo is null) || Accordo.Equals(Accordo, other.Accordo));
         return uguali;
     }
     public override bool Equals(object? obj)

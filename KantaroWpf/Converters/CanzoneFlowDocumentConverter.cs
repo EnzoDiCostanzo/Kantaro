@@ -1,4 +1,5 @@
-﻿using Enzo.Music;
+﻿using CommunityToolkit.Mvvm.DependencyInjection;
+using Enzo.Music;
 using Microsoft.VisualBasic;
 using System;
 using System.Collections.Generic;
@@ -28,10 +29,23 @@ class CanzoneFlowDocumentConverter : IValueConverter
         if (value is null || value is not Canzone) return DependencyProperty.UnsetValue;
         if (targetType != typeof(FlowDocument))
             throw new InvalidOperationException("Il tipo di destinazione deve essere un FlowDocument");
-        var strofeDict = new Dictionary<string, Strofa>();
 
         var doc = new FlowDocument();
-        Canzone song = (Canzone)value;
+        doc.Blocks.Add(GetSection((Canzone)value));
+        return doc;
+    }
+
+    public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+    {
+        return DependencyProperty.UnsetValue;
+    }
+
+    public Section GetSection(Canzone song)
+    {
+        Section docPage = new Section
+        {
+            BreakPageBefore = true // Forza inizio pagina
+        };
         if (!string.IsNullOrWhiteSpace(song.Titolo))
         {
             var par = new Paragraph()
@@ -41,7 +55,7 @@ class CanzoneFlowDocumentConverter : IValueConverter
                 FontWeight = TitoloFontWeight
             };
             par.Inlines.Add(song.Titolo);
-            doc.Blocks.Add(par);
+            docPage.Blocks.Add(par);
         }
         if (!string.IsNullOrWhiteSpace(song.Autore))
         {
@@ -52,7 +66,7 @@ class CanzoneFlowDocumentConverter : IValueConverter
                 FontWeight = AutoreFontWeight
             };
             par.Inlines.Add(song.Autore);
-            doc.Blocks.Add(par);
+            docPage.Blocks.Add(par);
         }
         var noteTrovate = (from strofa in song.GetStrofe()
                            from p in strofa.Parti
@@ -63,6 +77,7 @@ class CanzoneFlowDocumentConverter : IValueConverter
         var noteBemolli = new Dictionary<NotaEnum, bool>();
         foreach (var nota in altreNoteTrovate)
             noteBemolli.Add(nota, false);
+        var strofeDict = new Dictionary<string, Strofa>();
         bool trovatoBemolle;
         do
         {
@@ -104,8 +119,8 @@ class CanzoneFlowDocumentConverter : IValueConverter
                         var nuovaNota = p.Accordo.Scala.NotaFondamentale;
                         var bemolle = noteBemolli.ContainsKey(nuovaNota.Valore) && noteBemolli[nuovaNota.Valore];
                         var partiConAccordiSimili = from parte in strofaDaConvertire.Parti
-                                                where parte?.Accordo?.Scala?.NotaFondamentale == nuovaNota
-                                                select parte;
+                                                    where parte?.Accordo?.Scala?.NotaFondamentale == nuovaNota
+                                                    select parte;
                         if (bemolle && partiConAccordiSimili.FirstOrDefault() is not null)
                             bemolle = false;
                         testoAccordo = p.Accordo.ToString(bemolle);
@@ -119,13 +134,8 @@ class CanzoneFlowDocumentConverter : IValueConverter
                     b.Inlines.Add("\r\n");
                 }
             }
-            doc.Blocks.Add(b);
+            docPage.Blocks.Add(b);
         }
-        return doc;
-    }
-
-    public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-    {
-        return DependencyProperty.UnsetValue;
+        return docPage;
     }
 }
