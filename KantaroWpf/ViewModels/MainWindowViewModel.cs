@@ -80,7 +80,7 @@ public partial class MainWindowViewModel : ObservableRecipient
 
     public bool CanGoPrevious => !ShowSong && ((SelectedFileElement?.IsContainer ?? false) || AllFolderElements?.FirstOrDefault(f => f.IsPreviousFolder) is not null);
 
-    [RelayCommand]
+    [RelayCommand(CanExecute =nameof(CanGoPrevious))]
     public void GoPrevious()
     {
         if (FolderPath is null) return;
@@ -98,7 +98,10 @@ public partial class MainWindowViewModel : ObservableRecipient
 
         var fp = SelectedFileElement.FilePath;
         if (SelectedFileElement.IsContainer)
+        {
             FolderPath = fp;
+            Filter = string.Empty;
+        }
         else if (SelectedFileElement.Exists && !SelectedFileElement.HasErrors)
         {
             Canzone = await dataService.GetCanzoneFromFilePathAsync(fp);
@@ -127,11 +130,14 @@ public partial class MainWindowViewModel : ObservableRecipient
         var filterValue = Filter;
         FilteredFolderElements.Clear();
         if (string.IsNullOrEmpty(filterValue))
+        {
             foreach (var f in AllFolderElements.Where(f => !f.IsPreviousFolder))
             {
                 FilteredFolderElements.Add(f);
             }
+        }
         else
+        {
             foreach (var f in AllFolderElements.Where(f =>
             {
                 var elem = (FileElement)f;
@@ -140,7 +146,7 @@ public partial class MainWindowViewModel : ObservableRecipient
             {
                 FilteredFolderElements.Add(f);
             }
-        ;
+        }
     }
 
     [RelayCommand]

@@ -25,63 +25,61 @@
             <Style TargetType="Button" x:Key="ButtonCommandStyle">
                 <Setter Property="Margin" Value="0" />
                 <Setter Property="Padding" Value="0" />
+                <Setter Property="Height" Value="30" />
                 <Setter Property="Width" Value="30" />
                 <Setter Property="FontFamily" Value="Segoe Fluent Icons" />
             </Style>
         </ResourceDictionary>
     </Window.Resources>
+    <Window.InputBindings>
+        <KeyBinding Modifiers="Alt" Key="Up" Command="{Binding GoPreviousCommand}" />
+        <KeyBinding Modifiers="" Key="Backspace" Command="{Binding GoPreviousCommand}" />
+        <KeyBinding Modifiers="" Key="F5" Command="{Binding RefreshCommand}" />
+    </Window.InputBindings>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition />
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0" Visibility="{Binding ShowFiles, Converter={StaticResource BooleanToVisibilityConverter}}">
-            <!--Barra di navigazione-->
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="56" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="40" />
-                <ColumnDefinition Width="40" />
-                <ColumnDefinition Width="200" />
-            </Grid.ColumnDefinitions>
-            <Label Content="Cartella: " />
-            <Grid Grid.Column="1">
-                <ProgressBar IsIndeterminate="True" Visibility="{Binding IsWorking, Converter={StaticResource BooleanToVisibilityConverter}, IsAsync=True}" />
-                <TextBox Text="{Binding FolderPath, UpdateSourceTrigger=PropertyChanged}" Margin="0">
-                    <TextBox.Style>
-                        <Style TargetType="TextBox">
-                            <Style.Triggers>
-                                <DataTrigger Binding="{Binding IsWorking}" Value="True">
-                                    <Setter Property="Opacity" Value="0.5" />
-                                </DataTrigger>
-                            </Style.Triggers>
-                        </Style>
-                    </TextBox.Style>
-                </TextBox>
-            </Grid>
-            <Button Grid.Column="2" Content="" Style="{StaticResource ButtonCommandStyle}"
-                    IsEnabled="{Binding CanGoPrevious}" Command="{Binding GoPreviousCommand}">
-                <Button.InputBindings>
-                    <KeyBinding Command="{Binding GoPreviousCommand}" Key="Backspace" />
-                </Button.InputBindings>
-            </Button>
-            <Button Grid.Column="3" Content="" FontFamily="Segoe MDL2 Assets"
-                    Style="{StaticResource ButtonCommandStyle}"
-                    Command="{Binding RefreshCommand}">
-                <Button.InputBindings>
-                    <KeyBinding Command="{Binding RefreshCommand}" Key="F5" />
-                </Button.InputBindings>
-            </Button>
-            <StackPanel Grid.Column="4" Orientation="Horizontal" Margin="3 0 0 0">
+        <!--Barra di navigazione-->
+        <ToolBarOverflowPanel HorizontalAlignment="Left">
+            <ToolBar Visibility="{Binding ShowFiles, Converter={StaticResource BooleanToVisibilityConverter}}">
+                <Label Content="Cartella: " />
+                <Grid Width="500">
+                    <ProgressBar IsIndeterminate="True" Visibility="{Binding IsWorking, Converter={StaticResource BooleanToVisibilityConverter}, IsAsync=True}" />
+                    <TextBox Text="{Binding FolderPath, UpdateSourceTrigger=PropertyChanged}" Margin="0">
+                        <TextBox.Style>
+                            <Style TargetType="TextBox">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding IsWorking}" Value="True">
+                                        <Setter Property="Opacity" Value="0.5" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBox.Style>
+                    </TextBox>
+                </Grid>
+                <Button Content="" Style="{StaticResource ButtonCommandStyle}" ToolTip="Indietro (ALT + FRECCIA SU)"
+                        IsEnabled="{Binding CanGoPrevious}" Command="{Binding GoPreviousCommand}">
+                </Button>
+                <Separator />
+                <Button Content="" FontFamily="Segoe MDL2 Assets"
+                        Style="{StaticResource ButtonCommandStyle}"
+                        Command="{Binding RefreshCommand}" ToolTip="Aggiorna (F5)">
+                </Button>
+                <Button Content="" Command="{Binding PrintFilteredSongsCommand}" Style="{StaticResource ButtonCommandStyle}"
+                        Visibility="{Binding SelectedFileElement.IsListOfFiles, Converter={StaticResource BooleanToVisibilityConverter}}" />
+            </ToolBar>
+            <ToolBar Visibility="{Binding ShowFiles, Converter={StaticResource BooleanToVisibilityConverter}}">
                 <Label Content="" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center" />
-                <TextBox Width="175" Text="{Binding Filter, Mode=OneWayToSource, Delay=5, UpdateSourceTrigger=PropertyChanged}" AutomationProperties.HelpText="Cerca" />
-            </StackPanel>
-        </Grid>
-        <Grid Grid.Row="0" Visibility="{Binding ShowSong, Converter={StaticResource BooleanToVisibilityConverter}}">
-            <StackPanel>
+                <TextBox Width="175" Text="{Binding Filter, Delay=5, UpdateSourceTrigger=PropertyChanged}" AutomationProperties.HelpText="Cerca" />
+            </ToolBar>
+            <ToolBar Visibility="{Binding ShowSong, Converter={StaticResource BooleanToVisibilityConverter}}">
                 <Button Content="" Command="{Binding PrintSongCommand}" Style="{StaticResource ButtonCommandStyle}" />
-            </StackPanel>
-        </Grid>
+                <Separator Height="30" Margin="5 0" BorderBrush="Gray" />
+                <Button Content="" Command="{Binding CloseSongCommand}" Style="{StaticResource ButtonCommandStyle}"  IsCancel="True" />
+            </ToolBar>
+        </ToolBarOverflowPanel>
         <Grid Name="FileBrowser" Grid.Row="1"
               Visibility="{Binding ShowFiles, Converter={StaticResource BooleanToVisibilityConverter}}">
             <DockPanel>
@@ -203,9 +201,6 @@
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
                     </ListBox>
-                    <Button Width="30" Height="30" HorizontalAlignment="Right" VerticalAlignment="Top"
-                            Content="" FontFamily="Segoe Fluent Icons" Command="{Binding PrintFilteredSongsCommand}"
-                            Visibility="{Binding SelectedFileElement.IsListOfFiles, Converter={StaticResource BooleanToVisibilityConverter}}" />
                 </Grid>
             </DockPanel>
         </Grid>
@@ -229,54 +224,7 @@
                                 IsPrintEnabled="False" IsFindEnabled="False"
                                 IsScrollViewEnabled="False" IsTwoPageViewEnabled="False"
                                 IsManipulationEnabled="True" />
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right"
-                        Grid.Column="1">
-                <Button Command="{Binding CloseSongCommand}" IsCancel="True">
-                    <Button.Template>
-                        <ControlTemplate>
-                            <Border x:Name="Bordo" CornerRadius="8"
-                                BorderBrush="DarkSlateGray"
-                                Width="40">
-                                <Border.Background>
-                                    <SolidColorBrush Color="Transparent" />
-                                </Border.Background>
-                                <TextBlock x:Name="Testo" Text="" FontFamily="Segoe MDL2 Assets"
-                                       HorizontalAlignment="Center" VerticalAlignment="Center">
-                                    <TextBlock.Foreground>
-                                        <SolidColorBrush Color="LightGray" />
-                                    </TextBlock.Foreground>
-                                </TextBlock>
-                            </Border>
-                            <ControlTemplate.Triggers>
-                                <EventTrigger RoutedEvent="Mouse.MouseEnter">
-                                    <BeginStoryboard>
-                                        <Storyboard>
-                                            <ColorAnimation Storyboard.TargetName="Bordo"
-                                                            Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
-                                                            Duration="0:0:0.2" From="Transparent" To="LightGray" />
-                                            <ColorAnimation Storyboard.TargetName="Testo"
-                                                            Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)"
-                                                            Duration="0:0:0.2" To="White" />
-                                        </Storyboard>
-                                    </BeginStoryboard>
-                                </EventTrigger>
-                                <EventTrigger RoutedEvent="Mouse.MouseLeave">
-                                    <BeginStoryboard>
-                                        <Storyboard>
-                                            <ColorAnimation Storyboard.TargetName="Bordo"
-                                                            Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
-                                                            Duration="0:0:0.2" From="LightGray" To="Transparent" />
-                                            <ColorAnimation Storyboard.TargetName="Testo"
-                                                            Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)"
-                                                            Duration="0:0:0.2" To="LightGray" />
-                                        </Storyboard>
-                                    </BeginStoryboard>
-                                </EventTrigger>
-                            </ControlTemplate.Triggers>
-                        </ControlTemplate>
-                    </Button.Template>
-                </Button>
-            </StackPanel>
+
 
         </Grid>
     </Grid>
