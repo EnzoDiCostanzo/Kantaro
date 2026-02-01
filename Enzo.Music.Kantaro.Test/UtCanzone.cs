@@ -27,6 +27,18 @@ internal class UtCanzone
         Assert.That(a, Is.Not.EqualTo(b), "Canzoni con strofe diverse risultano uguali");
     }
 
+    [Test]
+    public void TestPrimoAccordo()
+    {   
+        Canzone c = GetCanzone(4, 4, true);
+        Accordo? a = c.GetPrimoAccordo();
+        Assert.That(a, Is.Not.Null, "PrimoAccordo() ritorna null su canzone valida");
+        Assert.That(a!.Scala.NotaFondamentale, Is.EqualTo(Nota.DO), "PrimoAccordo() ritorna accordo con tonalità errata");
+        var c2 = new Canzone();
+        Accordo? a2 = c2.GetPrimoAccordo();
+        Assert.That(a2, Is.Null, "PrimoAccordo() non ritorna null su canzone vuota");
+    }
+
     private Canzone GetCanzone(int numeroStrofe, int numeroParti, bool conRit)
     {
         var c = new Canzone();
@@ -56,6 +68,7 @@ internal class UtCanzone
         for (int i = 1; i <= numero; i++)
         {
             Parte p = new Parte { Testo = $"Parte n°{numero}" };
+            p.Accordo = new Accordo(new Scala(Nota.DO + i - 1, new ModoMaggiore()));
             r.Add(p);
         }
         return r;

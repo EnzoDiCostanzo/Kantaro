@@ -42,6 +42,19 @@ public class Canzone : IEquatable<Canzone>, IEqualityOperators<Canzone, Canzone,
         }
     }
 
+    public Accordo? GetPrimoAccordo()
+    {
+        foreach (var strofa in Strofe)
+        {
+            foreach (var parte in strofa.Parti)
+            {
+                if (parte is not null && parte.Accordo is not null)
+                    return parte.Accordo;
+            }
+        }
+        return null;
+    }
+
     public static async Task<Canzone?> FromStreamAsync(StreamReader stream)
     {
         ArgumentNullException.ThrowIfNull(stream);
@@ -77,7 +90,7 @@ public class Canzone : IEquatable<Canzone>, IEqualityOperators<Canzone, Canzone,
                 Autore = document.Element("canzone")?.Attribute("autore")?.Value ?? string.Empty,
                 OriginalRawText = document.ToString()
             };
-            
+
             try
             {
                 if (int.TryParse(document.Element("canzone")?.Attribute("variazione")?.Value, out int variazione))

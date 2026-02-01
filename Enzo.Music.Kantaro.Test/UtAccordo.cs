@@ -234,4 +234,25 @@ public class UtAccordo
         Assert.IsNull(nuovoAccordo.Basso, "Accordo.Basso valorizzato dopo decremento di un semitono dell'accordo di RE-7");
         Assert.That(nuovoAccordo.ToString().ToUpper(), Is.EqualTo("DO#-7"));
     }
+
+    [Test]
+    public void VerificaDistanzeTraAccordi()
+    {
+        int distanza = DOmag - DOmag;
+        Assert.That(distanza, Is.EqualTo(0), "Distanza tra DO e DO diversa da 0");
+        distanza = DOmag - DOmin;
+        Assert.That(distanza, Is.EqualTo(0), "Distanza tra DO e DOm diversa da 0");
+        distanza = REmag - DOmag;
+        Assert.That(distanza, Is.EqualTo(2), "Distanza tra RE e DO diversa da 2");
+        distanza = MImag - DOmin;
+        Assert.That(distanza, Is.EqualTo(4), "Distanza tra MI e DOm diversa da 4");
+        distanza = FAmag - DOmag;
+        Assert.That(distanza, Is.EqualTo(5), "Distanza tra FA e DO diversa da 5");
+        distanza = SOLmag - DOmag;
+        Assert.That(distanza, Is.EqualTo(-5), "Distanza tra SOL e DO diversa da -5");
+        distanza = LAmag - DOmag;
+        Assert.That(distanza, Is.EqualTo(-3), "Distanza tra LA e DO diversa da -3");
+        distanza = SImag - DOmag;
+        Assert.That(distanza, Is.EqualTo(-1), "Distanza tra SI e DO diversa da -1");
+    }
 }

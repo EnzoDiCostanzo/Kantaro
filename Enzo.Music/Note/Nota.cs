@@ -64,6 +64,13 @@ public class Nota : IAdditionOperators<Nota, Distanza, Nota>, IAdditionOperators
         return left - (Distanza)right;
     }
 
+    public static int operator -(Nota left, Nota right)
+    {
+        int semitoni = ((int)left.Valore - (int)right.Valore + 12) % 12;
+        if (semitoni > 6) semitoni -= 12; // per avere valori negativi se la distanza è più corta in quel verso
+        return semitoni;
+    }
+
     public static bool operator ==(Nota? left, Nota? right)
     {
         if (left is null) return false;

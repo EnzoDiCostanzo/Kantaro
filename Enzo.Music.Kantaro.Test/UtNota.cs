@@ -230,4 +230,22 @@ internal class UtNota
             Assert.That(B + (Distanza)((float)i / 2), Is.EqualTo(nuova), $"Verifica costruzione con salti nota SI + {(int)i}");
         }
     }
+
+    [Test]
+    public void VerificaDistanzeTraNote()
+    {
+        Assert.That(Nota.DOdiesis - Nota.DO, Is.EqualTo(1), "Distanza tra DO e DO# errata");
+        Assert.That(Nota.RE - Nota.DO, Is.EqualTo(2), "Distanza tra DO e RE errata");
+        Assert.That(Nota.REdiesis - Nota.DO, Is.EqualTo(3), "Distanza tra DO e RE# errata");
+        Assert.That(Nota.MI - Nota.DO, Is.EqualTo(4), "Distanza tra DO e MI errata");
+        Assert.That(Nota.FA - Nota.DO, Is.EqualTo(5), "Distanza tra DO e FA errata");
+        Assert.That(Nota.FAdiesis - Nota.DO, Is.EqualTo(6), "Distanza tra DO e FA# errata");
+        Assert.That(Nota.SOL - Nota.DO, Is.EqualTo(-5), "Distanza tra DO e SOL errata");
+        Assert.That(Nota.SOLdiesis - Nota.DO, Is.EqualTo(-4), "Distanza tra DO e SOL# errata");
+        Assert.That(Nota.LA - Nota.DO, Is.EqualTo(-3), "Distanza tra DO e LA errata");
+        Assert.That(Nota.LAdiesis - Nota.DO, Is.EqualTo(-2), "Distanza tra DO e LA# errata");
+        Assert.That(Nota.SI - Nota.DO, Is.EqualTo(-1), "Distanza tra DO e SI errata");
+        Assert.That(Nota.DO - Nota.DO, Is.EqualTo(0), "Distanza tra DO e DO errata");
+        Assert.That(Nota.DO - Nota.SI, Is.EqualTo(-1 * (Nota.SI - Nota.DO)), "Distanza tra SI e DO errata");
+    }
 }

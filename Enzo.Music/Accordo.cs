@@ -171,6 +171,16 @@ public class Accordo : ICloneable, IAdditionOperators<Accordo, Distanza, Accordo
         return n;
     }
 
+    public static int operator -(Accordo left, Accordo right)
+    {
+        int d = 0;
+        if (right is not null && !left.Scala.NotaFondamentale.Equals(right.Scala.NotaFondamentale))
+        {
+            d = left.Scala.NotaFondamentale - right.Scala.NotaFondamentale;
+        }
+        return d;
+    }
+
     public static bool operator ==(Accordo? left, Accordo? right)
     {
         if (left is null || right is null) return false;
