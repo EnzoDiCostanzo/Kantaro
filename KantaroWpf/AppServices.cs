@@ -5,6 +5,8 @@ using Enzo.Music.KantaroWpf.Views;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.Design;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,8 +28,11 @@ public partial class AppServices : ObservableObject
         //    DataContext = provider.GetRequiredService<MainWindowViewModel>()
         //});
         //services.AddSingleton<INavigationService, NavigationService>();
-
-        services.AddSingleton<IDataService, FileSystemDataService>();
+        // Se siamo in design mode, usiamo un servizio dati di design, altrimenti usiamo il servizio dati reale che accede al file system
+        if (DesignerProperties.GetIsInDesignMode(new DependencyObject()))
+            services.AddSingleton<IDataService, DesignDataService>();
+        else
+            services.AddSingleton<IDataService, FileSystemDataService>();
         services.AddSingleton<MainWindowViewModel>();
         //services.AddSingleton<KantojViewModel>();
         //services.AddScoped<KantoViewModel>();

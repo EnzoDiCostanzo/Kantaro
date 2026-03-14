@@ -32,7 +32,7 @@ namespace Enzo.Music.KantaroWpf.Services
                 new FileElement {FileName = "..", FilePath = "c:\\", IsFolder = true, IsPreviousFolder = true, Title = ".."},
                 new FileElement {FileName = "Cartella d'esempio", FilePath = "c:\\temp\\folder1", IsFolder = true, Title = "folder1"},
                 new FileElement {FileName = "kantoj1", FilePath = "c:\\temp\\file1.kantoj", IsListOfFiles = true, Title = "file1.kantoj"},
-                new FileElement {FileName = "kanto1", FilePath = "c:\\temp\\file1.kanto", Title = "Alleluia (Toronto 2002)"},
+                new FileElement {FileName = "kanto1", FilePath = "c:\\temp\\file1.kanto", Title = "Alleluia (Toronto 2002)", FirstAccord="Re"},
                 new FileElement {FileName = "kanto2", FilePath = "c:\\temp\\file2.kanto", Title = "Altra canzone della lista con nome molto lungo"},
                 new FileElement {FileName = "kanto3", FilePath = "c:\\temp\\file3.kanto", Title = "Canzone con errori", HasErrors = true},
                 new FileElement {FileName = "kanto4", FilePath = "c:\\temp\\file4.kanto", Title = "File mancante", Exists = false}

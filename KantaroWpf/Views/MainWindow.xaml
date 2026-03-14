@@ -154,47 +154,80 @@
                                                 </Style.Triggers>
                                             </Style>
                                         </StackPanel.Style>
-                                        <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="32" Margin="0 0 4 0">
-                                            <TextBlock.Style>
-                                                <Style TargetType="TextBlock">
-                                                    <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding IsPreviousFolder}" Value="True">
-                                                            <Setter Property="Text" Value="" />
-                                                        </DataTrigger>
-                                                        <MultiDataTrigger>
-                                                            <MultiDataTrigger.Conditions>
-                                                                <Condition Binding="{Binding IsPreviousFolder}" Value="False" />
-                                                                <Condition Binding="{Binding IsFolder}" Value="True" />
-                                                            </MultiDataTrigger.Conditions>
-                                                            <Setter Property="Text" Value="" />
-                                                        </MultiDataTrigger>
-                                                        <DataTrigger Binding="{Binding IsListOfFiles}" Value="True">
-                                                            <Setter Property="Text" Value="" />
-                                                        </DataTrigger>
-                                                        <MultiDataTrigger>
-                                                            <MultiDataTrigger.Conditions>
-                                                                <Condition Binding="{Binding IsPreviousFolder}" Value="False" />
-                                                                <Condition Binding="{Binding IsFolder}" Value="False" />
-                                                                <Condition Binding="{Binding IsListOfFiles}" Value="False" />
-                                                            </MultiDataTrigger.Conditions>
-                                                            <Setter Property="Text" Value="" />
-                                                        </MultiDataTrigger>
-                                                    </Style.Triggers>
-                                                </Style>
-                                            </TextBlock.Style>
-                                        </TextBlock>
-                                        <Viewbox Width="200" HorizontalAlignment="Left">
-                                            <TextBlock Text="{Binding Path=Title}" Width="200" FontSize="18" TextWrapping="WrapWithOverflow" VerticalAlignment="Center">
+                                        <Grid>
+                                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="32" HorizontalAlignment="Center" VerticalAlignment="Center">
                                                 <TextBlock.Style>
                                                     <Style TargetType="TextBlock">
+                                                        <Style.Triggers>
+                                                            <DataTrigger Binding="{Binding IsPreviousFolder}" Value="True">
+                                                                <Setter Property="Text" Value="" />
+                                                            </DataTrigger>
+                                                            <MultiDataTrigger>
+                                                                <MultiDataTrigger.Conditions>
+                                                                    <Condition Binding="{Binding IsPreviousFolder}" Value="False" />
+                                                                    <Condition Binding="{Binding IsFolder}" Value="True" />
+                                                                </MultiDataTrigger.Conditions>
+                                                                <Setter Property="Text" Value="" />
+                                                            </MultiDataTrigger>
+                                                            <DataTrigger Binding="{Binding IsListOfFiles}" Value="True">
+                                                                <Setter Property="Text" Value="" />
+                                                            </DataTrigger>
+                                                            <MultiDataTrigger>
+                                                                <MultiDataTrigger.Conditions>
+                                                                    <Condition Binding="{Binding IsPreviousFolder}" Value="False" />
+                                                                    <Condition Binding="{Binding IsFolder}" Value="False" />
+                                                                    <Condition Binding="{Binding IsListOfFiles}" Value="False" />
+                                                                </MultiDataTrigger.Conditions>
+                                                                <Setter Property="Text" Value="" />
+                                                            </MultiDataTrigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </TextBlock.Style>
+                                            </TextBlock>
+                                            <Grid Width="22" HorizontalAlignment="Left" Margin="4 0 0 0">
+                                                <Viewbox Stretch="None">
+                                                    <TextBlock FontFamily="Segoe UI">
+                                                        <TextBlock.Style>
+                                                            <Style TargetType="TextBlock">
+                                                                <Style.Triggers>
+                                                                    <MultiDataTrigger>
+                                                                        <MultiDataTrigger.Conditions>
+                                                                            <Condition Binding="{Binding IsPreviousFolder}" Value="False" />
+                                                                            <Condition Binding="{Binding IsFolder}" Value="False" />
+                                                                            <Condition Binding="{Binding IsListOfFiles}" Value="False" />
+                                                                        </MultiDataTrigger.Conditions>
+                                                                        <Setter Property="Text" Value="{Binding Path=FirstAccord}" />
+                                                                    </MultiDataTrigger>
+                                                                </Style.Triggers>
+                                                                <Setter Property="Foreground" Value="Purple" />
+                                                            </Style>
+                                                        </TextBlock.Style>
+                                                    </TextBlock>
+                                                </Viewbox>
+                                            </Grid>
+                                        </Grid>
+                                        <Viewbox Width="180" HorizontalAlignment="Left" VerticalAlignment="Center">
+                                            <Grid VerticalAlignment="Center">
+                                                <Grid.Style>
+                                                    <Style TargetType="Grid">
                                                         <Style.Triggers>
                                                             <DataTrigger Binding="{Binding IsPreviousFolder}" Value="True">
                                                                 <Setter Property="Visibility" Value="Collapsed" />
                                                             </DataTrigger>
                                                         </Style.Triggers>
                                                     </Style>
-                                                </TextBlock.Style>
-                                            </TextBlock>
+                                                </Grid.Style>
+                                                <Grid.Resources>
+                                                    <Style TargetType="TextBlock">
+                                                        <Setter Property="FontSize" Value="16" />
+                                                        <Setter Property="Margin" Value="6 0 0 0" />
+                                                    </Style>
+                                                </Grid.Resources>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*" />
+                                                </Grid.ColumnDefinitions>
+                                                <TextBlock Grid.Column="0" Text="{Binding Path=Title}" TextWrapping="WrapWithOverflow" />
+                                            </Grid>
                                         </Viewbox>
                                     </StackPanel>
                                 </Border>

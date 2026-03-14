@@ -58,6 +58,10 @@ public class FileElement
     /// Titolo della canzone. Per i file di tipo Container (cartelle o file .kantoj) il valore è null (Nothing in Visual Basic).
     /// </summary>
     public string? Title { get; set; }
+    /// <summary>
+    /// Primo accordo presente nella canzone. Per i file di tipo Container (cartelle o file .kantoj) il valore è null (Nothing in Visual Basic).
+    /// </summary>
+    public string? FirstAccord { get; set; }
 
     /// <summary>
     /// Negazione della proprietà IsContainer.

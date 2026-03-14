@@ -7,6 +7,7 @@ public class Canzoni
     {
         public string FilePath;
         public string Title;
+        public string? PrimoAccordo { get; set; }
 
         internal CanzoniItem(string filePath, string title)
         {
@@ -49,7 +50,7 @@ public class Canzoni
         Canzoni kj = new();
         var canti = from k in document.Descendants("kanto")
                     let filePath = Path.Combine(basePath ?? string.Empty, k.Value)
-                    select new CanzoniItem(filePath, k.Attribute("title")?.Value ?? string.Empty);
+                    select new CanzoniItem(filePath, k.Attribute("title")?.Value ?? string.Empty) { PrimoAccordo = k.Attribute("primoAccordo")?.Value };
         kj.canzoni.AddRange(canti);
         return kj;
     }
@@ -62,6 +63,8 @@ public class Canzoni
             XElement k = new("kanto") { Value = c.FilePath };
             if (!string.IsNullOrEmpty(c.Title))
                 k.SetAttributeValue("title", c.Title);
+            if (!string.IsNullOrEmpty(c.PrimoAccordo))
+                k.SetAttributeValue("primoAccordo", c.PrimoAccordo);
             if (doc.Root?.LastNode is null)
                 doc.Root?.AddFirst(k);
             else

@@ -78,9 +78,11 @@ public partial class MainWindowViewModel : ObservableRecipient
         }
     }
 
+    public string? SelectedFileElementFirstAccord => SelectedFileElement?.FirstAccord?.ToString();
+
     public bool CanGoPrevious => !ShowSong && ((SelectedFileElement?.IsContainer ?? false) || AllFolderElements?.FirstOrDefault(f => f.IsPreviousFolder) is not null);
 
-    [RelayCommand(CanExecute =nameof(CanGoPrevious))]
+    [RelayCommand(CanExecute = nameof(CanGoPrevious))]
     public void GoPrevious()
     {
         if (FolderPath is null) return;
@@ -106,6 +108,17 @@ public partial class MainWindowViewModel : ObservableRecipient
         {
             Canzone = await dataService.GetCanzoneFromFilePathAsync(fp);
             VariazioneInSemitoni = Canzone?.VariazioneInSemitoni ?? 0;
+            var primoAccordo = Canzone?.GetPrimoAccordo();
+            if (SelectedFileElement.FirstAccord is not null && primoAccordo is not null)
+            {
+                Accordo? p;
+                Accordo.TryParse(SelectedFileElement.FirstAccord, out p);
+                if (p != null)
+                {
+                    // Se la canzone ha un accordo di riferimento, calcola la variazione in semitoni
+                    VariazioneInSemitoni = primoAccordo - p;
+                }
+            }
         }
     }
 

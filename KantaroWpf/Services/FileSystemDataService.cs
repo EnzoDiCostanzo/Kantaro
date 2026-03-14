@@ -158,13 +158,42 @@ class FileSystemDataService : IDataService
         await Task.Run(() =>
         {
             var xDoc = XDocument.Load(kantojFilePath);
-            var dirPath = Path.GetDirectoryName(kantojFilePath) ?? string.Empty;
-            var kantoFiles = from k in xDoc.Descendants("kanto")
-                             select Path.Combine(dirPath, k.Value);
-            ret = GetFileElementsFromKantoFiles(kantoFiles);
+            var ks = Canzoni.FromXDocument(xDoc, Path.GetDirectoryName(kantojFilePath));
+            ret = GetFileElementsFromCanzoniItems(ks.Items);
+            //var dirPath = Path.GetDirectoryName(kantojFilePath) ?? string.Empty;
+            //var kantoFiles = from k in xDoc.Descendants("kanto")
+            //                 select Path.Combine(dirPath, k.Value);
+            //ret = GetFileElementsFromKantoFiles(kantoFiles);
         });
         ret ??= [];
         return [.. ret];
+    }
+
+    private static IEnumerable<FileElement> GetFileElementsFromCanzoniItems(IEnumerable<Canzoni.CanzoniItem> canzoniItems)
+    {
+        var ret = new List<FileElement>();
+        var canti = from item in canzoniItems
+                    select new FileElement
+                    {
+                        FilePath = item.FilePath,
+                        FileName = Path.GetFileNameWithoutExtension(item.FilePath),
+                        Exists = System.IO.File.Exists(item.FilePath),
+                        Title = (!string.IsNullOrEmpty(item?.Title)) ? item.Title : Path.GetFileNameWithoutExtension(item.FilePath),
+                        FirstAccord = item.PrimoAccordo
+                    };
+        foreach (var canto in canti)
+        {
+            ret.Add(new FileElement()
+            {
+                FilePath = canto.FilePath,
+                FileName = canto.FileName,
+                Title = canto.Title,
+                FirstAccord = canto.FirstAccord,
+                Exists = canto.Exists
+            });
+        }
+        FileValidationCheck(ret);
+        return ret;
     }
 
     private static IEnumerable<FileElement> GetFileElementsFromKantoFiles(IEnumerable<string> kantoFiles)
@@ -198,25 +227,42 @@ class FileSystemDataService : IDataService
                 c.Title = c.FileName;
             ret.Add(c);
         });
+        FileValidationCheck(ret);
+        return ret;
+    }
+
+    private static void FileValidationCheck(List<FileElement> ret)
+    {
         try
         {
             Parallel.ForEach(ret, c => Task.Run(() =>
+            //foreach (var c in ret)
             {
                 try
                 {
-                    if (c?.FilePath is not null && Canzone.FromXDocument(XDocument.Load(c.FilePath)) is null)
-                        c.HasErrors = true;
+                    if (c?.FilePath is not null)
+                    {
+                        var canzone = Canzone.FromXDocument(XDocument.Load(c.FilePath));
+                        if (canzone is not null)
+                        {
+                            if (!string.IsNullOrWhiteSpace(canzone.Titolo)) c.Title = canzone.Titolo;
+                            if (string.IsNullOrEmpty(c.FirstAccord))
+                                c.FirstAccord = canzone?.GetPrimoAccordo()?.ToString();
+                        }
+                        else
+                            c.HasErrors = true;
+                    }
                 }
                 catch //(Exception ex)
                 {
                     c.HasErrors = true;
                 }
+            //}
             }));
         }
         catch (Exception ex)
         {
             MessageBox.Show(ex.Message, "Error");
         }
-        return ret;
     }
 }
