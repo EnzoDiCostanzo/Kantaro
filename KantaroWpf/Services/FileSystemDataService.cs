@@ -22,6 +22,7 @@ class FileSystemDataService : IDataService
 
     public async Task CreateIndexAsync(string folderPath)
     {
+        if (!Directory.Exists(folderPath)) return;
         string folderFullPath = Path.IsPathRooted(folderPath) ? folderPath : Path.GetFullPath(folderPath);
         string fileName = Path.Combine(folderFullPath, INDEX_FILE_NAME);
         var canzoni = new Dictionary<string, Canzone?>();
