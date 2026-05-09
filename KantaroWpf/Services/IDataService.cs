@@ -14,4 +14,5 @@ public interface IDataService
     Task<Canzone?> GetCanzoneFromFilePathAsync(string filePath);
     Task<List<FileElement>> GetFileElementsFromFolderAsync(string folderPath);
     Task CreateIndexAsync(string folderPath);
+    Task SaveCanzoneToFilePathAsync(Canzone c, string filePath);
 }

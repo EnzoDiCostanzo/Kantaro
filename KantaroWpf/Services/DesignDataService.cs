@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Interop;
+using System.Xml.Linq;
 
 namespace Enzo.Music.KantaroWpf.Services
 {
@@ -38,6 +39,11 @@ namespace Enzo.Music.KantaroWpf.Services
                 new FileElement {FileName = "kanto4", FilePath = "c:\\temp\\file4.kanto", Title = "File mancante", Exists = false}
                 ];
             return Task.FromResult(ret);
+        }
+
+        public Task SaveCanzoneToFilePathAsync(Canzone c, string filePath)
+        {
+            throw new NotImplementedException();
         }
     }
 }

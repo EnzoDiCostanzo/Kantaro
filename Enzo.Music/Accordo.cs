@@ -215,35 +215,43 @@ public class Accordo : ICloneable, IAdditionOperators<Accordo, Distanza, Accordo
 
     public static bool TryParse(string value, out Accordo? result)
     {
-        ArgumentNullException.ThrowIfNull(value);
-        var parti = value.Split("/");
-        if (!Scala.TryParse(parti[0], out Scala? sc)) throw new InvalidCastException($"Testo non convertibile in Accordo: {parti[0]}");
-        if (sc is null) throw new InvalidCastException();
-        Accordo acc = new(sc, value);
-        if (parti[0][sc.ToString().Length..].Length > 0)
+        try
         {
-            string temp = parti[0][sc.ToString().Length..];
-            EstensioneT ext = new();
-            string num = new([.. temp.ToCharArray().TakeWhile(char.IsDigit)]);
-            if (int.TryParse(num, out int valNumb)) ext.Valore = valNumb;
-            if (num != temp)
+            ArgumentNullException.ThrowIfNull(value);
+            var parti = value.Split("/");
+            if (!Scala.TryParse(parti[0], out Scala? sc)) throw new InvalidCastException($"Testo non convertibile in Accordo: {parti[0]}");
+            if (sc is null) throw new InvalidCastException();
+            Accordo acc = new(sc, value);
+            if (parti[0][sc.ToString().Length..].Length > 0)
             {
-                ext.VariazioneSemitono = temp[num.Length..] switch
+                string temp = parti[0][sc.ToString().Length..];
+                EstensioneT ext = new();
+                string num = new([.. temp.ToCharArray().TakeWhile(char.IsDigit)]);
+                if (int.TryParse(num, out int valNumb)) ext.Valore = valNumb;
+                if (num != temp)
                 {
-                    "+" => EstensioneT.EstensioneVariazioneSemitonoEnum.Aumentato,
-                    "dim" => EstensioneT.EstensioneVariazioneSemitonoEnum.Diminuito,
-                    _ => EstensioneT.EstensioneVariazioneSemitonoEnum.None,
-                };
+                    ext.VariazioneSemitono = temp[num.Length..] switch
+                    {
+                        "+" => EstensioneT.EstensioneVariazioneSemitonoEnum.Aumentato,
+                        "dim" => EstensioneT.EstensioneVariazioneSemitonoEnum.Diminuito,
+                        _ => EstensioneT.EstensioneVariazioneSemitonoEnum.None,
+                    };
+                }
+                acc.Estensione = ext;
             }
-            acc.Estensione = ext;
+            if (parti.Length > 1)
+            {
+                if (parti.Length != 2 || !Nota.TryParse(parti[1], out Nota? basso)) throw new InvalidCastException($"Testo non convertibile in Accordo: {parti[1]}");
+                acc.Basso = basso;
+            }
+            result = acc;
+            return true;
         }
-        if (parti.Length > 1)
+        catch (Exception ex)
         {
-            if (parti.Length != 2 || !Nota.TryParse(parti[1], out Nota? basso)) throw new InvalidCastException($"Testo non convertibile in Accordo: {parti[1]}");
-            acc.Basso = basso;
+            result = null;
+            return false;
         }
-        result = acc;
-        return true;
     }
 
     public static explicit operator Accordo?(string value)
@@ -254,7 +262,8 @@ public class Accordo : ICloneable, IAdditionOperators<Accordo, Distanza, Accordo
 
     public override string ToString()
     {
-        return ToString(false);
+        bool bemollePrefer = Scala.NotaFondamentale.Valore == NotaEnum.LAdiesis;
+        return ToString(bemollePrefer);
     }
     public string ToString(bool bemollePrefer)
     {

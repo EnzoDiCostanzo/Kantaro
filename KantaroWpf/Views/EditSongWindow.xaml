@@ -1,0 +1,94 @@
+﻿<Window x:Class="Enzo.Music.KantaroWpf.Views.EditSongWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewModel="clr-namespace:Enzo.Music.KantaroWpf.ViewModels"
+        mc:Ignorable="d"
+        Title="Nuova Canzone" Height="700" Width="700">
+    <Window.DataContext>
+        <viewModel:EditSongViewModel />
+    </Window.DataContext>
+    <Window.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Button" x:Key="ButtonStyle">
+                <Setter Property="Margin" Value="10 0" />
+                <Setter Property="Width" Value="100" />
+            </Style>
+            <Style TargetType="Button" x:Key="ButtonCommandStyle">
+                <Setter Property="Margin" Value="5 0 0 0" />
+                <Setter Property="Padding" Value="0" />
+                <Setter Property="Height" Value="30" />
+                <Setter Property="Width" Value="30" />
+                <Setter Property="FontFamily" Value="Segoe Fluent Icons" />
+            </Style>
+        </ResourceDictionary>
+    </Window.Resources>
+    <DockPanel LastChildFill="True">
+        <Grid DockPanel.Dock="Top" Margin="15">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <TextBox Text="{Binding NomeFile, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,5"/>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <TextBox Grid.Column="0" Text="{Binding Titolo, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,2,10"/>
+                <TextBox Grid.Column="1" Text="{Binding Autore, UpdateSourceTrigger=PropertyChanged}" Margin="2,0,0,10"/>
+            </Grid>
+        </Grid>
+        <Grid Margin="15 0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="200" />
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" Background="Beige" VerticalAlignment="Center">
+                <TextBlock Text="Incolla o scrivi il testo della canzone. Premi TAB per separare le strofe (verrà inserito il simbolo §). Usa Invio per i ritorni a capo interni. Per inserire un accordo su una riga, scrivi [Accordo] all'inizio della riga." FontStyle="Italic" Margin="0,0,0,10"/>
+            </Grid>
+            <DockPanel Grid.Row="1">
+                <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" Margin="0 5" VerticalAlignment="Top">
+                    <Button Content="" ToolTip="Analizza testo" Command="{Binding AnalizzaTestoCommand}" Style="{StaticResource ButtonCommandStyle}" />
+                    <Button Content="" ToolTip="Salva" Command="{Binding SalvaCanzoneCommand}" Style="{StaticResource ButtonCommandStyle}" />
+                </StackPanel>
+                <TextBox AcceptsReturn="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto"
+                 Text="{Binding TestoCanzone, UpdateSourceTrigger=PropertyChanged}" MinLines="5"
+                 PreviewKeyDown="TextBox_PreviewKeyDown"/>
+            </DockPanel>
+            <GridSplitter Grid.Row="1" Height="3" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" ShowsPreview="True" ResizeDirection="Rows" />
+            <Grid Grid.Row="2" Margin="0 0 0 15" Background="Transparent">
+                <ScrollViewer VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Auto">
+                    <ItemsControl ItemsSource="{Binding Strofe}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel Orientation="Vertical" CanVerticallyScroll="True">
+                                </StackPanel>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <GroupBox Header="{Binding Nome, FallbackValue=Strofa}">
+                                    <StackPanel>
+                                        <ItemsControl ItemsSource="{Binding Parti}">
+                                            <ItemsControl.ItemTemplate>
+                                                <DataTemplate>
+                                                    <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                                                        <TextBox Text="{Binding Testo, UpdateSourceTrigger=PropertyChanged}" Width="350" Margin="0,0,10,0"/>
+                                                        <TextBox Text="{Binding Accordo, UpdateSourceTrigger=PropertyChanged}" Width="80"/>
+                                                    </StackPanel>
+                                                </DataTemplate>
+                                            </ItemsControl.ItemTemplate>
+                                        </ItemsControl>
+                                    </StackPanel>
+                                </GroupBox>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </ScrollViewer>
+            </Grid>
+        </Grid>
+    </DockPanel>
+</Window>

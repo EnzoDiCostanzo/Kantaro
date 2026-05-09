@@ -3,6 +3,7 @@ using CommunityToolkit.Mvvm.Input;
 using Enzo.Music.KantaroWpf.Converters;
 using Enzo.Music.KantaroWpf.Models;
 using Enzo.Music.KantaroWpf.Services;
+using Enzo.Music.KantaroWpf.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -51,11 +52,11 @@ public partial class MainWindowViewModel : ObservableRecipient
         set
         {
             if (string.IsNullOrWhiteSpace(value)) return;
-            if (!string.Equals(value, folderPath))
+            if (SetProperty(ref folderPath, value))
             {
-                SetProperty(ref folderPath, value);
                 OnFolderPathChanged();
                 OnPropertyChanged(nameof(WindowTitle));
+                OnPropertyChanged(nameof(CanCreateNewSong));
                 OnPropertyChanged(nameof(CanGoPrevious));
             }
         }
@@ -64,10 +65,12 @@ public partial class MainWindowViewModel : ObservableRecipient
     private async void OnFolderPathChanged()
     {
         await LoadFromFolderAsync();
+        Filter = string.Empty;
         Canzone = null;
     }
 
     private FileElement? selectedFileElement;
+
     public FileElement? SelectedFileElement
     {
         get => selectedFileElement;
@@ -193,6 +196,7 @@ public partial class MainWindowViewModel : ObservableRecipient
         finally
         {
             Task.WaitAll();
+            OnPropertyChanged(nameof(CanCreateNewSong));
             OnPropertyChanged(nameof(CanGoPrevious));
             IsWorking = saveIsWorking;
         }
@@ -245,6 +249,7 @@ public partial class MainWindowViewModel : ObservableRecipient
     [NotifyPropertyChangedFor(nameof(ShowSong))]
     [NotifyPropertyChangedFor(nameof(ShowFiles))]
     [NotifyPropertyChangedFor(nameof(WindowTitle))]
+    [NotifyPropertyChangedFor(nameof(CanCreateNewSong))]
     [NotifyPropertyChangedFor(nameof(CanGoPrevious))]
     private Canzone? canzone;
 
@@ -287,6 +292,26 @@ public partial class MainWindowViewModel : ObservableRecipient
         var cfdConv = new CanzoneFlowDocumentConverter();
         var d = (FlowDocument)cfdConv.Convert(canzone, new FlowDocument().GetType(), string.Empty, System.Globalization.CultureInfo.CurrentCulture);
         PrintFlowDocument(d, $"Kanto {canzone.Titolo}");
+    }
+
+    public bool CanCreateNewSong => !ShowSong && !string.IsNullOrEmpty(FolderPath) && Directory.Exists(FolderPath);
+
+    [RelayCommand(CanExecute = nameof(CanCreateNewSong))]
+    private void CreateNewSong()
+    {
+        var window = new EditSongWindow();
+        if (window.DataContext is EditSongViewModel vm)
+        {
+            vm.CanzoneSalvata += async (canzone, nomeFile) =>
+            {
+                // Salva la canzone tramite il servizio
+                var filePath = Path.Combine(FolderPath, nomeFile.EndsWith(".kanto") ? nomeFile : nomeFile + ".kanto");
+                await dataService.SaveCanzoneToFilePathAsync(canzone, filePath);
+                window.DialogResult = true;
+                window.Close();
+            };
+        }
+        window.ShowDialog();
     }
     #endregion
 }

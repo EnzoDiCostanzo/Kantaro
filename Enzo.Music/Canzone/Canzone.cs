@@ -49,7 +49,14 @@ public class Canzone : IEquatable<Canzone>, IEqualityOperators<Canzone, Canzone,
             foreach (var parte in strofa.Parti)
             {
                 if (parte is not null && parte.Accordo is not null)
-                    return parte.Accordo;
+                {
+                    Accordo primoAccordo = parte.Accordo;
+                    if (VariazioneInSemitoni != 0)
+                    {
+                        primoAccordo += new Distanza() { Semitoni = VariazioneInSemitoni };
+                    }
+                    return primoAccordo;
+                }
             }
         }
         return null;

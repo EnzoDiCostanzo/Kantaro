@@ -101,6 +101,7 @@ public class UtAccordo
         var DO7 = (Accordo?)"DO7";
         Assert.That(DO7?.ToString().ToUpper(), Is.EqualTo("DO7"));
         var SIb7 = (Accordo?)"SIb7";
+        Assert.That(SIb7?.ToString().ToUpper(), Is.EqualTo("SIB7"));
         ConfrontaAccordiA1Tono("DO7,SIb7", DO7, SIb7);
         var a2 = SOL_mag.Clone() as Accordo;
         if(a2 is null) throw new NullReferenceException("Trovato valore null al Clone dell'accordo di SOL");

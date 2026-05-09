@@ -110,22 +110,23 @@ class CanzoneFlowDocumentConverter : IValueConverter
                 if (p is not null)
                 {
                     string testoAccordo;
-                    if (p.Accordo is null)
-                    {
-                        testoAccordo = string.Empty;
-                    }
-                    else
-                    {
-                        var nuovaNota = p.Accordo.Scala.NotaFondamentale;
-                        var bemolle = noteBemolli.ContainsKey(nuovaNota.Valore) && noteBemolli[nuovaNota.Valore];
-                        var partiConAccordiSimili = from parte in strofaDaConvertire.Parti
-                                                    where parte?.Accordo?.Scala?.NotaFondamentale == nuovaNota
-                                                    select parte;
-                        if (bemolle && partiConAccordiSimili.FirstOrDefault() is not null)
-                            bemolle = false;
-                        testoAccordo = p.Accordo.ToString(bemolle);
-                    }
-                    TextBlock tb = new TextBlock();
+                    //if (p.Accordo is null)
+                    //{
+                    //    testoAccordo = string.Empty;
+                    //}
+                    //else
+                    //{
+                    //    var nuovaNota = p.Accordo.Scala.NotaFondamentale;
+                    //    var bemolle = noteBemolli.ContainsKey(nuovaNota.Valore) && noteBemolli[nuovaNota.Valore];
+                    //    var partiConAccordiSimili = from parte in strofaDaConvertire.Parti
+                    //                                where parte?.Accordo?.Scala?.NotaFondamentale == nuovaNota
+                    //                                select parte;
+                    //    if (bemolle && partiConAccordiSimili.FirstOrDefault() is not null)
+                    //        bemolle = false;
+                    //    testoAccordo = p.Accordo.ToString(bemolle);
+                    //}
+                    testoAccordo = p.Accordo?.ToString() ?? string.Empty;
+                    TextBlock tb = new();
                     tb.Inlines.Add($"{testoAccordo}\r\n{p.Testo}");
                     b.Inlines.Add(tb);
                 }

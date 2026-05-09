@@ -63,6 +63,9 @@
                         IsEnabled="{Binding CanGoPrevious}" Command="{Binding GoPreviousCommand}">
                 </Button>
                 <Separator />
+                <Button Content="" Command="{Binding CreateNewSongCommand}" Style="{StaticResource ButtonCommandStyle}"
+                        Visibility="{Binding CanCreateNewSong, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                <Separator Visibility="{Binding CanCreateNewSong, Converter={StaticResource BooleanToVisibilityConverter}}" />
                 <Button Content="" FontFamily="Segoe MDL2 Assets"
                         Style="{StaticResource ButtonCommandStyle}"
                         Command="{Binding RefreshCommand}" ToolTip="Aggiorna (F5)">

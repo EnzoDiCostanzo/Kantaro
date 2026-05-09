@@ -258,12 +258,25 @@ class FileSystemDataService : IDataService
                 {
                     c.HasErrors = true;
                 }
-            //}
+                finally
+                {
+                    if (string.IsNullOrEmpty(c.Title))
+                        c.Title = System.IO.Path.GetFileName(c.FilePath);
+                }
+                //}
             }));
         }
         catch (Exception ex)
         {
             MessageBox.Show(ex.Message, "Error");
         }
+    }
+
+    public async Task SaveCanzoneToFilePathAsync(Canzone canzone, string filePath)
+    {
+        var xdoc = canzone.ToXml();
+        using var writer = XmlWriter.Create(filePath, new XmlWriterSettings { Indent = true });
+        xdoc.WriteTo(writer);
+        await writer.FlushAsync();
     }
 }
